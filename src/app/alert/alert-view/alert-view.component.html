@@ -1,2 +1,43 @@
 <app-navigation-view></app-navigation-view>
-<p>alert-view works!</p>
+<!DOCTYPE HTML>
+<html>
+<head>
+<link rel="stylesheet" href="alert-view.component.css">
+<title>
+    "Alert setup"
+</title>
+</head>
+<body>
+    <h1>Alert setup</h1>
+    <h2>Personalise your alert settings to fit your needs.</h2>
+
+    <div 
+        class="popover-container">
+        <button
+            class="button button1">Turn alerts on/off <!--state dependent-->
+        </button><br>
+    </div>
+
+    <div
+        class="popover-container">
+        <button
+            class="button button2"
+            popovertarget="MotivationLevel1"
+            popovertargetaction="toggle">Motivation level
+        </button><br>
+        <p popover id="MotivationLevel1">Intense</p>
+        <!--<p popover id="MotivationLevel2">Intense</p>-->
+    </div>
+
+    <div
+        class="popover-container">
+        <button
+            class="button button3"
+            popovertarget="AlertIntensity"
+            popovertargetaction="toggle">Alert intensity
+        </button>
+        <p popover id="AlertIntensity">soft</p>
+    </div>
+
+</body>
+</html>

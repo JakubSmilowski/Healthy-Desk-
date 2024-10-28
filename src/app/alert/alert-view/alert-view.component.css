@@ -1,0 +1,36 @@
+body {
+    background-color: rgba(0,0,255, 0.3);
+}
+
+h1, h2 {
+    text-align: center;
+    color: black;
+}
+
+h1 {
+    font-size: 55px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+.popover-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+}
+
+.button1, .button2, .button3 {
+    padding: 10px 20px;
+    border-radius: 5px;
+}
+
+p {
+    color: rgb(40, 80, 130);
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: max-content;
+    white-space: nowrap;
+}
