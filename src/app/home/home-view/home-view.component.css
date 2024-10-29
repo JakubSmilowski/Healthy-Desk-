@@ -11,6 +11,26 @@ h2 {
   gap: 20px;
 }
 
+.header {
+  text-align: center;
+  padding: 15px;
+  background-color: rgb(132, 198, 220);
+  box-shadow: rgb(136, 136, 136) 0 4px 8px -4px;
+  border-bottom: 2px solid rgb(199, 199, 199);
+}
+
+.header-title {
+  font-size: 2em;
+  font-weight: bold;
+  color: white;
+  margin: 0;
+}
+
+#profiles-section {
+display: flex;
+justify-content: center;
+gap: 20px;
+}
 /* CREATE PROFILE SECTION */
 
 h5 {
@@ -74,6 +94,33 @@ h5 {
   font-weight: 600;
 }
 
+#adjust-arrows {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.arrow {
+  font-size: 1.5em;
+  padding: 5px 15px;
+  cursor: pointer;
+  border: 1px solid grey;
+  background-color: lightblue;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.arrow:hover {
+  background-color: #b3d9ff;
+  transform: scale(1.1);
+}
+
+.arrow:active {
+  background-color: #80bfff;
+}
+
 #stand-every {
   margin-bottom: 1px;
   font-weight: 600;
@@ -127,7 +174,6 @@ h5 {
   opacity: 1;
   outline: 0 solid transparent;
   padding: 8px 18px;
-
   transition: transform 0.3s ease;
 }
 

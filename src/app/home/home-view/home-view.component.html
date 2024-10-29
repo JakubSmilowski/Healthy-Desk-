@@ -1,5 +1,9 @@
 <app-navigation-view (toggleAccountVisibility)="toggleAccountVisibility()"></app-navigation-view>
 <body>
+    <header class = "header">
+        <h1 class = "header-title">Healthy Desk</h1>
+    </header>
+
     <h2>Your Profiles</h2>
     <section id="profiles-section">
         <div>
@@ -11,6 +15,12 @@
                 <div id="set-height">
                     <label for="height-slider">Table Height (cm): {{ height }}</label>
                     <input id="height-slider" [(ngModel)]="height" type="range" min="0" max="100" step="1" />
+                </div>
+
+                <div id="adjust-arrows">
+                    <button class="arrow" id="increase-height" (click)="increaseHeight()">▲</button>
+                    <span id="current-height">{{ height }} cm</span>
+                    <button class="arrow" id="decrease-height" (click)="decreaseHeight()">▼</button>
                 </div>
                 
                 <p id="stand-every">Rise desk every:</p>

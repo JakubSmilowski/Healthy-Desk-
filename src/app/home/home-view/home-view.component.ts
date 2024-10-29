@@ -31,6 +31,18 @@ export class HomeViewComponent {
     }
   }
 
+   increaseHeight() {
+    if (this.height < 100) {
+      this.height += 1;
+    }
+  }
+
+  decreaseHeight() {
+    if (this.height > 0) {
+      this.height -= 1;
+    }
+  }
+
   saveProfile() {
     const time = `${this.hours}h ${this.minutes}m`;
 
