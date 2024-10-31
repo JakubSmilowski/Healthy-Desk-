@@ -1,4 +1,3 @@
-<app-navigation-view (toggleAccountVisibility)="toggleAccountVisibility()"></app-navigation-view>
 <body>
     <header class = "header">
         <h1 class = "header-title">Healthy Desk</h1>
@@ -52,7 +51,5 @@
                 </div>
             </div>
         </div>
-        <!--User popup module-->
-        <app-account-popup-view *ngIf="isAccountMenuVisible" (close)="toggleAccountVisibility()"></app-account-popup-view>
     </section>
 </body>

@@ -3,18 +3,19 @@
     flex-direction: column;
     align-content: center;
 }
+
 .navigation-container{
     display: flex;
     justify-content: center;
     gap: 8px;
 }
+
 hr {
     width: 90vh;
     border-width: 2px;  
     color: rgb(0, 0, 0);
     align-self: center;
 }
-
 
 .material-symbols-outlined {
     justify-self: flex-end;

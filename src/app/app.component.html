@@ -1,6 +1,7 @@
 
 <!-- Header -->
-
+<app-navigation-view (toggleAccountVisibility)="toggleAccountVisibility()"></app-navigation-view>
+<app-account-popup-view *ngIf="isAccountMenuVisible" (close)="toggleAccountVisibility()"></app-account-popup-view>
 <router-outlet></router-outlet>
 
 <!-- Footer -->

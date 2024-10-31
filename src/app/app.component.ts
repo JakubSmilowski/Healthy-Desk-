@@ -7,4 +7,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Healthy-Desk';
+
+  isAccountMenuVisible: boolean = false;
+  
+  toggleAccountVisibility() {
+    this.isAccountMenuVisible = !this.isAccountMenuVisible;
+  }
 }

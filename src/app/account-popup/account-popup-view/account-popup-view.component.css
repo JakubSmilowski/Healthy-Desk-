@@ -1,3 +1,7 @@
+* {
+    z-index: 3;
+}
+
 @keyframes fall {
     0% {
       transform: translateY(-100%);
@@ -71,6 +75,3 @@
 .close-popup-button {
     cursor: pointer;
 }
-
-
-  
