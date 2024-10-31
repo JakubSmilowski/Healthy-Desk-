@@ -1,0 +1,57 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+h2 {
+  align-self: center;
+  color: rgb(85, 179, 211);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+}
+
+
+#analytics-section {
+    display: flex;
+    justify-content: right;
+    margin-right: 50px;
+    gap: 20px;
+}
+
+h5 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    margin-top: 0px;
+    margin-bottom: 0;
+    width: 45vh;
+    border: 0.5px solid rgb(199, 199, 199);
+    border-radius: 30px 30px 0 0;
+    background-color: lightblue;
+    box-shadow: rgb(136, 136, 136) 0 10px 20px -10px;
+  }
+
+#month-analytics {
+  height: 67vh;
+  padding: 20px;
+  overflow-y: auto;
+  border: 2px solid rgb(199, 199, 199);
+  border-radius: 0 0 30px 30px;
+  background-color: rgb(221, 221, 221);
+  box-shadow: rgb(136, 136, 136) 0 10px 20px -10px;
+}
+
+#title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.month-container {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: lightblue;
+}

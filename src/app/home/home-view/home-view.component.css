@@ -1,8 +1,13 @@
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 h2 {
-  align-self: left;
-  text-decoration: underline;
-  margin-left: 60px;
-  color: rgb(132, 198, 220);
+  align-self: center;
+  color: rgb(85, 179, 211);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
 }
 
 #profiles-section {
