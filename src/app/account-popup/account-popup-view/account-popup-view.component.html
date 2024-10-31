@@ -2,7 +2,24 @@
     <div class="popup-content" (click)="$event.stopPropagation()">
       <div class="popup-header">
         <h5>Account</h5>
+        <p class="close-popup-button" (click)="onClose()">X</p>
       </div>
-      <!--<button (click)="onClose()">Close</button>-->
+      <div class="popup-description">
+        <div class="description-group">
+          <b>Name</b>
+          <p>Hubert</p>
+        </div>
+        <div class="description-group">
+          <b>Role</b>
+          <p>Admin</p>
+        </div>
+        <div class="description-group">
+          <b>Password</b>
+          <div class="password-container">
+              <p>*****</p>
+              <p class="change-password-button">(change)</p>
+          </div>
+        </div>
+      </div>
     </div>
   </div>

@@ -1,3 +1,17 @@
+@keyframes fall {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    80% {
+      transform: translateY(10%);
+      opacity: 1;
+    }
+    100% {
+      transform: translateY(0);
+    }
+}
+
 .popup-overlay {
     margin: 0;
     position: fixed;
@@ -10,8 +24,20 @@
     justify-content: center;
     align-items: center;
 }
+
+.popup-content {
+    position: static;
+    background-color: #eeeeee;
+    border-radius: 30px;
+    padding: 30px;
+    width: 70%;
+    height: 70%;
+    z-index: 3;
+    animation: fall 0.5s linear forwards;
+}
   
 .popup-header {
+    position: static;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -21,13 +47,29 @@
     border-bottom: 0.5px solid rgb(53, 85, 64);
 }
 
-.popup-content {
-    background-color: #eeeeee;
-    border-radius: 30px;
-    padding: 20px;
-    width: 70%;
-    height: 70%;
-    z-index: 100;
+.popup-description {
+    margin-top: 20px;
+}
+
+.description-group {
+    margin-bottom: 10px;
+}
+
+.password-container {
+    display: flex;
+    align-items: center;
+}
+
+.password-container p {
+    margin-right: 5px;
+}
+
+.change-password-button {
+    color: blue;
+}
+
+.close-popup-button {
+    cursor: pointer;
 }
 
 
