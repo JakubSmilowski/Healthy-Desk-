@@ -21,4 +21,7 @@ import {MatDivider, MatDividerModule} from '@angular/material/divider';
     NavigationViewComponent
   ]
 })
-export class NavigationModule { }
+export class NavigationModule {
+  
+
+ }
