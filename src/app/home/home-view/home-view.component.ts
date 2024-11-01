@@ -8,6 +8,7 @@ import { Profile } from '../../models/profile.model';
   styleUrl: './home-view.component.css'
 })
 export class HomeViewComponent {
+  deskHeight: number = 0;
   height: number = 50;
   profileTitle: string = '';
   hours: number = 0;
@@ -32,14 +33,14 @@ export class HomeViewComponent {
   }
 
    increaseHeight() {
-    if (this.height < 100) {
-      this.height += 1;
+    if (this.deskHeight < 100) {
+      this.deskHeight += 1;
     }
   }
 
   decreaseHeight() {
-    if (this.height > 0) {
-      this.height -= 1;
+    if (this.deskHeight > 0) {
+      this.deskHeight -= 1;
     }
   }
 

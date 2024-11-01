@@ -10,6 +10,10 @@ h2 {
   font-weight: bold;
 }
 
+#adjust-arrows {
+  margin: 30px;
+}
+
 #profiles-section {
   display: flex;
   justify-content: center;
@@ -21,6 +25,7 @@ display: flex;
 justify-content: center;
 gap: 20px;
 }
+
 /* CREATE PROFILE SECTION */
 
 h5 {
