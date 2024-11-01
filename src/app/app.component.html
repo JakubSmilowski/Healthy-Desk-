@@ -1,5 +1,8 @@
 
 <!-- Header -->
+<header class = "header">
+    <h1 class = "header-title">Healthy Desk</h1>
+</header>
 <app-navigation-view (toggleAccountVisibility)="toggleAccountVisibility()"></app-navigation-view>
 <app-account-popup-view *ngIf="isAccountMenuVisible" (close)="toggleAccountVisibility()"></app-account-popup-view>
 <router-outlet></router-outlet>

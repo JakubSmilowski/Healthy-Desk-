@@ -16,21 +16,6 @@ h2 {
   gap: 20px;
 }
 
-.header {
-  text-align: center;
-  padding: 15px;
-  background-color: rgb(132, 198, 220);
-  box-shadow: rgb(136, 136, 136) 0 4px 8px -4px;
-  border-bottom: 2px solid rgb(199, 199, 199);
-}
-
-.header-title {
-  font-size: 2em;
-  font-weight: bold;
-  color: white;
-  margin: 0;
-}
-
 #profiles-section {
 display: flex;
 justify-content: center;
