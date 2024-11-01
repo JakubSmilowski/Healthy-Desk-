@@ -10,6 +10,12 @@ h2 {
   font-weight: bold;
 }
 
+#content-wrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 20px;
+}
 
 #analytics-section {
     display: flex;
@@ -25,7 +31,7 @@ h5 {
     padding: 20px;
     margin-top: 0px;
     margin-bottom: 0;
-    width: 45vh;
+    width: 100%;
     border: 0.5px solid rgb(199, 199, 199);
     border-radius: 30px 30px 0 0;
     background-color: lightblue;
@@ -33,9 +39,8 @@ h5 {
   }
 
 #month-analytics {
-  height: 67vh;
+  height: auto;
   padding: 20px;
-  overflow-y: auto;
   border: 2px solid rgb(199, 199, 199);
   border-radius: 0 0 30px 30px;
   background-color: rgb(221, 221, 221);

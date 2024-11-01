@@ -15,10 +15,11 @@
                 <input id="title-input" [(ngModel)]="profileTitle" type="text" placeholder="No Title">
 
                 <div id="set-height">
-                    <label for="height-slider">Table Height (cm): {{ height }}</label>
-                    <input id="height-slider" [(ngModel)]="height" type="range" min="0" max="100" step="1" />
-                </div>                
-                <p id="stand-every">Rise desk every:</p>
+                    <label for="height-slider">Table height: <span class="height-value">{{height}}cm</span></label>
+                    <input id="height-slider" [(ngModel)]="height" type="range" min="68" max="132" step="1" />
+                </div>
+                
+                <p id="stand-every">Change desk height to <span class="height-value">{{height}}cm</span> every:</p>
                 <form id="timer-form">
                     <div class="time">
                         <label for="hours">Hours</label>

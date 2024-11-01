@@ -75,6 +75,12 @@ h5 {
   margin-left: 10px;
 }
 
+.height-value {
+  display: inline-block; /* Makes the width apply correctly */
+  width: 50px; /* Adjust width as necessary to accommodate the largest value */
+  text-align: center; /* Align text to the right for better readability */
+}
+
 #set-height {
   display: flex;
   flex-direction: column;
@@ -119,6 +125,7 @@ h5 {
 #stand-every {
   margin-bottom: 1px;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 #timer-form {
