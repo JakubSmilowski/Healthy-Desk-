@@ -27,4 +27,7 @@ import { AccountPopupModule } from './account-popup/account-popup.module';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  
+ }
