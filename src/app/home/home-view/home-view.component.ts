@@ -45,7 +45,7 @@ export class HomeViewComponent implements OnInit{
   }
 
   saveProfile() {
-    const time = `${this.hours}h${this.minutes}m`;
+    const time = `${this.hours}h ${this.minutes}m`;
 
     if (this.profileTitle === '') {
       this.profileTitle = 'No Title';

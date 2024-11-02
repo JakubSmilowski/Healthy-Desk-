@@ -1,8 +1,8 @@
 <p>login-view works!</p>
 <section id="login">
-    <label for="height-slider">Table height: <span class="height-value">{{defaultHeight}}cm</span></label>
-    <input id="height-slider" [(ngModel)]="defaultHeight" type="range" min="68" max="132" step="1" />
-    <p id="stand-every">Change desk height to <span class="height-value">{{defaultHeight}}cm</span> every:</p>
+    <p id="stand-every">Your Height (cm):</p>
+    <input id="userHeight" [(ngModel)]="userHeight" type="number" min="50" max="210" step="1" placeholder="50"/>
+    <p>Your desk will rise every: </p>
     <form id="timer-form">
         <div class="time">
             <label for="hours">Hours</label>
@@ -15,5 +15,5 @@
             [(ngModel)]="minutes" (ngModelChange)="validateMinutes()"/>
         </div>
     </form>
-    <button (click)="login()">Login</button>
+    <button (click)="register()">Register</button>
 </section>

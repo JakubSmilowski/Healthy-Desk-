@@ -8,7 +8,7 @@ import { Profile } from '../models/profile.model';
 export class HomeService {
   hours: number = 0;
   minutes: number = 0;
-  defaultHeight!: number;
+  userHeight!: number;
   profiles: Profile[] = [];
 
   constructor() {
@@ -25,25 +25,18 @@ export class HomeService {
   }
 
   saveDefaultProfile() {
-    const time = `${this.hours}h${this.minutes}m`;
+    const time = `${this.hours}h ${this.minutes}m`;
 
     const newProfile: Profile = {
       title: 'Default Profile',
-      height: this.defaultHeight,
+      height: Math.round(this.userHeight * 0.61),
       time: time
     };
 
     this.profiles.push(newProfile);
-    this.clearForm();
 
     this.profiles.forEach(profile => {
       console.log(profile)
     });
-  }
-
-  clearForm() {
-    this.defaultHeight = 0;
-    this.hours = 0;
-    this.minutes = 0;
   }
 }

@@ -10,14 +10,14 @@ import { Router } from '@angular/router';
 export class LoginViewComponent implements OnInit {
   hours!: number;
   minutes!: number;
-  defaultHeight!: number;
+  userHeight!: number;
 
   constructor(private homeService: HomeService, private router: Router) {}
 
   ngOnInit() {
     this.hours = 0;
     this.minutes = 0;
-    this.defaultHeight = 0;
+    this.userHeight = 0;
   }
   
   validateHours() {
@@ -30,10 +30,10 @@ export class LoginViewComponent implements OnInit {
     this.homeService.validateMinutes();
   }
 
-  login() {
+  register() {
     this.homeService.hours = this.hours;
     this.homeService.minutes = this.minutes;
-    this.homeService.defaultHeight = this.defaultHeight;
+    this.homeService.userHeight = this.userHeight;
     this.homeService.saveDefaultProfile();
     this.router.navigate(['']);
   }
