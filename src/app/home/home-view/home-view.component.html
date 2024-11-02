@@ -3,7 +3,7 @@
     <section id="arrows">
         <div id="adjust-arrows">
             <button class="arrow" id="increase-height" (click)="increaseHeight()">▲</button>
-            <span id="current-height">{{ deskHeight }} cm</span>
+            <span id="current-height">{{ curDeskHeight }} cm</span>
             <button class="arrow" id="decrease-height" (click)="decreaseHeight()">▼</button>
         </div>
     </section>
@@ -43,7 +43,7 @@
                         <h6>{{ profile.title }}</h6>
                         <button (click)="removeProfile(i)">x</button>
                     </div>
-                    <p>Height: {{ profile.height }} cm</p>
+                    <p>Height: {{ profile.height }}cm</p>
                     <p>Time: {{ profile.time }}</p>
                 </div>
             </div>

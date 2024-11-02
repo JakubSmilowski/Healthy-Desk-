@@ -1,60 +1,51 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HomeModule } from '../home.module';
 import { Profile } from '../../models/profile.model';
+import { HomeService } from '../home.service';
 
 @Component({
   selector: 'app-home-view',
   templateUrl: './home-view.component.html',
   styleUrl: './home-view.component.css'
 })
-export class HomeViewComponent {
-<<<<<<< HEAD
-  deskHeight: number = 0;
-  height: number = 50;
-=======
-  height: number = 68;
->>>>>>> f0e9fa22 (Fix analytics section and add default profile (incomplete))
-  profileTitle: string = '';
-  hours: number = 0;
-  minutes: number = 0;
-  defaultHeight: number = 0;
-  defaultHours: number = 0;
-  defaultMinutes: number = 0;
+export class HomeViewComponent implements OnInit{
+  constructor(private homeService: HomeService) {}
 
-  profiles: Profile[] = [
-    { title: 'Default Profile', height: this.defaultHeight, time: `${this.defaultHours}h ${this.defaultMinutes}m` },
-  ];
+  curDeskHeight: number = 0;
+  height: number = 68;
+  profileTitle: string = '';
+  hours!: number;
+  minutes!: number;
+  profiles!: Profile[];
+
+  ngOnInit(): void {
+      this.hours = this.homeService.hours;
+      this.minutes = this.homeService.minutes;
+      this.profiles = this.homeService.profiles;
+  }
 
   validateHours() {
-    if (this.hours > 23) {
-      this.hours = 23;
-    } else if (this.hours < 0) {
-      this.hours = 0;
-    }
+    this.homeService.validateHours();
   }
 
   validateMinutes() {
-    if (this.minutes > 59) {
-      this.minutes = 59;
-    } else if (this.minutes < 0) {
-      this.minutes = 0;
-    }
+    this.homeService.validateMinutes();
   }
 
-   increaseHeight() {
-    if (this.deskHeight < 100) {
-      this.deskHeight += 1;
+  increaseHeight() {
+    if (this.curDeskHeight < 68) {
+      this.curDeskHeight += 1;
     }
   }
 
   decreaseHeight() {
-    if (this.deskHeight > 0) {
-      this.deskHeight -= 1;
+    if (this.curDeskHeight > 132) {
+      this.curDeskHeight -= 1;
     }
   }
 
   saveProfile() {
-    const time = `${this.hours}h ${this.minutes}m`;
+    const time = `${this.hours}h${this.minutes}m`;
 
     if (this.profileTitle === '') {
       this.profileTitle = 'No Title';
