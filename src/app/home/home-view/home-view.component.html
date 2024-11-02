@@ -12,7 +12,7 @@
             <h5>Create New Profile</h5>
             <div id="create-profile">
                 <p id="title">Profile title:</p>
-                <input id="title-input" [(ngModel)]="profileTitle" type="text" placeholder="No Title">
+                <input id="title-input" [(ngModel)]="profileTitle" type="text" placeholder="No Title" minlength="5" maxlength="15">
 
                 <div id="set-height">
                     <label for="height-slider">Table height: <span class="height-value">{{height}}cm</span></label>

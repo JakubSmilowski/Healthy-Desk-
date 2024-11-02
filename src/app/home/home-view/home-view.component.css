@@ -10,89 +10,11 @@ h2 {
   font-weight: bold;
 }
 
+
+/* ARROWS */
+
 #adjust-arrows {
   margin: 30px;
-}
-
-#profiles-section {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
-
-#profiles-section {
-display: flex;
-justify-content: center;
-gap: 20px;
-}
-
-/* CREATE PROFILE SECTION */
-
-h5 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  margin-top: 0px;
-  margin-bottom: 0;
-  width: 350px;
-  border: 0.5px solid rgb(199, 199, 199);
-  border-radius: 30px 30px 0 0;
-  background-color: lightblue;
-  box-shadow: rgb(136, 136, 136) 0 10px 20px -10px;
-}
-
-#create-profile {
-  display: flex;
-  flex-direction: column;
-  height: 355px;
-  padding: 20px;
-  border: 2px solid rgb(199, 199, 199);
-  border-radius: 0 0 30px 30px;
-  background-color: rgb(221, 221, 221);
-  box-shadow: rgb(136, 136, 136) 0 10px 20px -10px;
-}
-
-#title {
-  margin-bottom: 0;
-  font-weight: 600;
-}
-
-#title-input {
-  width: 100%;
-  height: 40px;
-  align-self: center;
-  margin-bottom: 30px;
-  border: 1.5px solid grey;
-  border-radius: 5px;
-  font-weight: 450;
-  color: black;
-}
-
-#title-input::placeholder {
-  color: black;
-  opacity: 60%;
-  margin-left: 10px;
-}
-
-.height-value {
-  display: inline-block; /* Makes the width apply correctly */
-  width: 50px; /* Adjust width as necessary to accommodate the largest value */
-  text-align: center; /* Align text to the right for better readability */
-}
-
-#set-height {
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  width: 90%;
-  margin-bottom: 30px;
-  text-align: center;
-  font-weight: 450;
-}
-
-#set-height label {
-  font-weight: 600;
 }
 
 #adjust-arrows {
@@ -122,9 +44,93 @@ h5 {
   background-color: #80bfff;
 }
 
-#stand-every {
-  margin-bottom: 1px;
+
+/* PROFILES SECTION */
+
+#profiles-section {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+
+/* CREATE PROFILE */
+
+h5 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  margin-top: 0px;
+  margin-bottom: 0;
+  width: auto;
+  border: 0.5px solid rgb(199, 199, 199);
+  border-radius: 30px 30px 0 0;
+  background-color: lightblue;
+  box-shadow: rgb(136, 136, 136) 0 10px 20px -10px;
+}
+
+#create-profile {
+  display: flex;
+  flex-direction: column;
+  height: 60vh;
+  padding: 20px;
+  width: 60vh;
+  padding: 20px;
+  border: 2px solid rgb(199, 199, 199);
+  border-radius: 0 0 30px 30px;
+  background-color: rgb(221, 221, 221);
+  box-shadow: rgb(136, 136, 136) 0 10px 20px -10px;
+}
+
+#title {
+  margin-top: 30px;
+  margin-bottom: 0;
+  font-size: large;
   font-weight: 600;
+}
+
+#title-input {
+  width: 100%;
+  height: 40px;
+  align-self: center;
+  margin-bottom: 60px;
+  border: 1.5px solid grey;
+  border-radius: 5px;
+  font-weight: 450;
+  color: black;
+}
+
+#title-input::placeholder {
+  color: black;
+  opacity: 60%;
+  margin-left: 10px;
+}
+
+.height-value {
+  display: inline-block;
+  width: 50px;
+  text-align: center;
+}
+
+#set-height {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  width: 90%;
+  margin-bottom: 60px;
+  text-align: center;
+  font-size: large;
+}
+
+#set-height label {
+  font-weight: 600;
+}
+
+#stand-every {
+  margin-bottom: 10px;
+  font-weight: 500;
+  font-size: large;
   white-space: nowrap;
 }
 
@@ -133,9 +139,10 @@ h5 {
   flex-direction: row;
   justify-content: center;
   width: 100%;
-  margin-top: 0px;
-  margin-bottom: 30px;
+  margin-top: 10px;
+  margin-bottom: 80px;
   gap: 10px;
+  font-size: large;
 }
 
 .time {
@@ -145,7 +152,8 @@ h5 {
 }
 
 .time input {
-  width: 55px;
+  width: 60px;
+  height: 40px;
   align-self: center;
   text-align: center;
   border: 0.2px solid black;
@@ -157,7 +165,8 @@ h5 {
 }
 
 .time label {
-  font-weight: 450;
+  font-weight: 500;
+  font-size: large
 }
 
 #save-profile-button {
@@ -185,11 +194,12 @@ h5 {
 }
 
 
-/* USER PROFILES SECTION */
+/* USER PROFILES */
 
 #user-profiles {
-  height: 355px;
+  height: 60vh;
   padding: 20px;
+  width: 60vh;
   overflow-y: auto;
   border: 2px solid rgb(199, 199, 199);
   border-radius: 0 0 30px 30px;
@@ -201,6 +211,11 @@ h5 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: auto;
+}
+
+.profile {
+  width: auto;
 }
 
 #title-and-button button {
