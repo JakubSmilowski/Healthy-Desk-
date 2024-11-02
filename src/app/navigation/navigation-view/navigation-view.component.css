@@ -1,3 +1,15 @@
+.header-title {
+    position: absolute;
+    left:30px;
+    font-size: 28px;
+    cursor: pointer;
+    color: rgb(132, 198, 220);
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.13);
+    margin: 0;
+  
+}
+
 .container {
     display: flex;
     flex-direction: column;
