@@ -16,8 +16,9 @@ export class ScoreViewComponent implements OnInit {
   users: UserScore[] = [];
   currentUserId: number = 1;
   currentUserName: string = '';
-  currentUserScore: number = 0;  
-
+  todayScore: number = 21;  
+  weekScore: number = 41;
+  monthScore: number = 256;
 
   ngOnInit(): void {
     this.users = this.scoreService.getUserScore();
@@ -26,7 +27,7 @@ export class ScoreViewComponent implements OnInit {
     this.currentUserId = this.users[0].id; 
 
     this.currentUserName = this.users[this.currentUserId].name;
-    this.currentUserScore = this.users[this.currentUserId].score;
+    // this.currentUserScore = this.users[this.currentUserId].score;
   }
 
   displayUserScoreInOrder() {
