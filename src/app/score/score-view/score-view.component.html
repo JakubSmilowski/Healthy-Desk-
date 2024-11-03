@@ -1,36 +1,39 @@
 <div class="score-view" >
-    <div class="leaderboard-container">
+    <div class="leaderboard-box">
         <h2>Leaderboard:</h2>
-        <div class="leaderboard-list-container">
+        <div class="leaderboard-list-container container">
             <ol class="leaderboard-list">
-                <li >
-                    <div class="user-info" *ngFor="let user of users; let i = index">
-                        <h3>{{user.name}}</h3>
-                        <p>{{user.score}}</p>
-                    </div>
-                </li>
+                <div class="user-info-container"  *ngFor="let user of users; let i = index">
+                    <li>
+                        <div class="user-info">
+                            <span>{{user.name}}</span>
+                            <p>{{user.score}}</p>
+                        </div>
+                    </li>
+                    
+                </div>
             </ol>
         </div>
     </div>
     <div class="user-score">
-        <div class="stats-container">
+        <div class="stats-container container">
             <h2>Week: </h2>
             <div class="stats-text">
                 <h2>{{currentUserScore}}</h2>
                 <h3>Points</h3>
             </div>
         </div>
-        <div class="stats-container">
+        <div class="stats-container container">
             <h2>Month: </h2>
             <div class="stats-text">
                 <h2>{{currentUserScore}}</h2>
                 <h3>Points</h3>
             </div>
         </div>
-        <div class="stats-container">
+        <div class="stats-container container">
             <h2>Today:  </h2>
             <div class="stats-text">
-                <h2>{{currentUserScore}}</h2> 
+                <h2>{{currentUserScore}}</h2>   
                 <h3>Points</h3>
             </div>
         </div>

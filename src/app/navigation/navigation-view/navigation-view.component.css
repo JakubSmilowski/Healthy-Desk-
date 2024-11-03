@@ -1,9 +1,10 @@
+
 .header-title {
     position: absolute;
     left:30px;
     font-size: 28px;
     cursor: pointer;
-    color: rgb(132, 198, 220);
+    color: var(--lightBlue);
     font-weight: bold;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.13);
     margin: 0;
@@ -25,7 +26,7 @@
 hr {
     width: 90vh;
     border-width: 2px;  
-    color: rgb(0, 0, 0);
+    color:var(--textColor);
     align-self: center;
 }
 
@@ -40,10 +41,12 @@ hr {
 
 
 .custom-toolbar a {
-    color:black; 
+    color:var(--textColor); 
     margin: 0 10px; 
     font-weight: normal;
     font-size: large;
+    background-image: none;
+    background-color: transparent;
 }
 
 #userIcon {
