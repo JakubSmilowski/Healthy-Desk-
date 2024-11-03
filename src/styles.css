@@ -10,7 +10,11 @@
 
 
 
-html, body { height:100vh; }
+html, body { 
+    height:100%; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
     background-image: linear-gradient( to bottom, 
     #DCFBF2 9%,
