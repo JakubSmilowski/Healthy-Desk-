@@ -6,8 +6,8 @@
             <button class="arrow" id="decrease-height" (click)="decreaseHeight()">▼</button>
         </div>
     </section>
-    <h2>Your Profiles</h2>
-    <button id="add-profile" (click)="createProfilePopUp()">Add Profile</button>
+    <div>
+    <button class="button" id="add-profile-button" (click)="createProfilePopUp()">Add Profile</button>
     <section id="profiles-section">
         <div *ngIf="isFormVisible" class="create-profile-popup">
             <div id="create-profile">
@@ -33,7 +33,7 @@
                         [(ngModel)]="minutes" (ngModelChange)="validateMinutes()"/>
                     </div>
                 </form>
-                <button id="save-profile-button" (click)="saveProfile()">Save Profile</button>
+                <button class="button" id="save-profile-button" (click)="saveProfile()">Save</button>
             </div>
         </div>
         <div id="user-profiles">
@@ -47,4 +47,5 @@
             </div>
         </div>
     </section>
+    </div>
 </body>
