@@ -17,8 +17,8 @@ html, body {
 }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
     background-image: linear-gradient( to bottom, 
-    #DCFBF2 9%,
-    #AFDFF3 71%,
-    #86CEED 85%,
-    #5EBEE8 100%
+    rgba(220, 251, 242, 0.1) 9%,
+    rgba(175,223,243,0.5) 71% ,
+    rgba(134,206,237,0.85) 85% ,
+    rgba(94,190,232,1) 100% 
     );}
