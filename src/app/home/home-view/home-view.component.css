@@ -4,9 +4,12 @@ body {
 }
 
 h2 {
-  align-self: center;
-  color: rgb(85, 179, 211);
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  align-self: left;
+  margin-left: 70px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  color: rgb(132, 198, 220);
+  text-decoration: underline;
   font-weight: bold;
 }
 
@@ -56,31 +59,56 @@ h2 {
 
 /* CREATE PROFILE */
 
-h5 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  margin-top: 0px;
-  margin-bottom: 0;
-  width: auto;
-  border: 0.5px solid rgb(199, 199, 199);
-  border-radius: 30px 30px 0 0;
-  background-color: lightblue;
+#add-profile {
+  width: fit-content;
+  margin-left: 70px;
+  border: none;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgb(132, 198, 220);
   box-shadow: rgb(136, 136, 136) 0 10px 20px -10px;
+  box-sizing: border-box;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.3s ease;
+}
+
+#add-profile:hover {
+  transform: scale(1.05);
+}
+
+.create-profile-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
 }
 
 #create-profile {
   display: flex;
   flex-direction: column;
-  height: 60vh;
+  height: 90%;
   padding: 20px;
-  width: 60vh;
+  width: 80vh;
   padding: 20px;
   border: 2px solid rgb(199, 199, 199);
-  border-radius: 0 0 30px 30px;
-  background-color: rgb(221, 221, 221);
+  border-radius: 30px;
+  background-color: white;
   box-shadow: rgb(136, 136, 136) 0 10px 20px -10px;
+}
+
+#close-create {
+  align-self: right;
+  width: 10%;
+  margin-left: auto;
 }
 
 #title {
@@ -140,7 +168,7 @@ h5 {
   justify-content: center;
   width: 100%;
   margin-top: 10px;
-  margin-bottom: 80px;
+  margin-bottom: 30px;
   gap: 10px;
   font-size: large;
 }
@@ -197,14 +225,15 @@ h5 {
 /* USER PROFILES */
 
 #user-profiles {
-  height: 60vh;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  height: 300px;
   padding: 20px;
-  width: 60vh;
+  padding-left: 0;
+  margin: 20px;
+  width: 90%;
   overflow-y: auto;
-  border: 2px solid rgb(199, 199, 199);
-  border-radius: 0 0 30px 30px;
-  background-color: rgb(221, 221, 221);
-  box-shadow: rgb(136, 136, 136) 0 10px 20px -10px;
 }
 
 #title-and-button {
@@ -212,13 +241,10 @@ h5 {
   align-items: center;
   justify-content: space-between;
   width: auto;
+  font-weight: 600;
 }
 
-.profile {
-  width: auto;
-}
-
-#title-and-button button {
+.delete-button {
   padding: 0px 10px 5px 10px;
   background-color: #ff4d4d;
   border: none;
@@ -229,17 +255,23 @@ h5 {
   transition: 0.3s ease;
 }
 
-#title-and-button button:hover {
+.delete-button:hover {
   background-color: #ff1a1a;
   transform: scale(1.05);
 }
 
 .profile {
+  flex: 1 1 30%;
+  height: fit-content;
+  margin: 10px;
+  max-width: calc(33.333% - 20px);
   margin: 10px;
   padding: 10px;
-  border: 1px solid black;
+  border: 2px solid rgb(132, 198, 220);
   border-radius: 20px;
-  background-color: lightblue;
+  background-color: rgb(132, 198, 220);
+  color: white;
+  font-weight: 600;
 }
 
 

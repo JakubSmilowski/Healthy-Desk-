@@ -17,11 +17,16 @@ export class HomeViewComponent implements OnInit{
   hours!: number;
   minutes!: number;
   profiles!: Profile[];
+  isFormVisible: boolean = false;
 
   ngOnInit(): void {
       this.hours = this.homeService.hours;
       this.minutes = this.homeService.minutes;
       this.profiles = this.homeService.profiles;
+  }
+
+  createProfilePopUp() {
+    this.isFormVisible = !this.isFormVisible;
   }
 
   validateHours() {
@@ -60,6 +65,7 @@ export class HomeViewComponent implements OnInit{
     this.profiles.push(newProfile);
 
     this.clearForm();
+    this.isFormVisible = false;
   }
 
   clearForm() {
