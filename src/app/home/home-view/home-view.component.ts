@@ -11,7 +11,7 @@ import { HomeService } from '../home.service';
 export class HomeViewComponent implements OnInit{
   constructor(private homeService: HomeService) {}
 
-  curDeskHeight: number = 0;
+  curDeskHeight: number = 68;
   height: number = 68;
   profileTitle: string = '';
   hours!: number;
@@ -38,14 +38,18 @@ export class HomeViewComponent implements OnInit{
   }
 
   increaseHeight() {
-    if (this.curDeskHeight < 68) {
-      this.curDeskHeight += 1;
+    if (this.curDeskHeight < 132) {
+      this.curDeskHeight += 1
+    } else if (this.curDeskHeight >= 132) {
+      this.curDeskHeight = 132
     }
   }
 
   decreaseHeight() {
-    if (this.curDeskHeight > 132) {
+    if (this.curDeskHeight > 68) {
       this.curDeskHeight -= 1;
+    } else if (this.curDeskHeight <= 68){
+      this.curDeskHeight = 68;
     }
   }
 

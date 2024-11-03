@@ -1,11 +1,13 @@
 <body>
-    <section id="arrows">
-        <div id="adjust-arrows">
-            <button class="arrow" id="increase-height" (click)="increaseHeight()">▲</button>
-            <span id="current-height">{{ curDeskHeight }} cm</span>
-            <button class="arrow" id="decrease-height" (click)="decreaseHeight()">▼</button>
-        </div>
-    </section>
+    <div id="arrows-container">
+        <section id="arrows">
+            <div id="current-height">{{ curDeskHeight }} cm</div>
+            <div id="adjust-arrows">
+                <button class="arrow" id="increase-height" (click)="increaseHeight()">▲</button>
+                <button class="arrow" id="decrease-height" (click)="decreaseHeight()">▼</button>
+            </div>
+        </section>
+    </div>
     <div>
     <button class="button" id="add-profile-button" (click)="createProfilePopUp()">Add Profile</button>
     <section id="profiles-section">

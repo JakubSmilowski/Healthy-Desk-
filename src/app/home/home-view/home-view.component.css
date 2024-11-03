@@ -1,6 +1,7 @@
 body {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 h2 {
@@ -9,7 +10,7 @@ h2 {
   margin-top: 40px;
   margin-bottom: 40px;
   color: rgb(128, 169, 175);
-  text-shadow: 2px 2px 2px #667384; /*#73a8ed */
+  text-shadow: 2px 2px 2px #667384;
   text-decoration: underline;
   font-weight: bold;
 }
@@ -17,35 +18,58 @@ h2 {
 
 /* ARROWS */
 
-#adjust-arrows {
-  margin: 30px;
+#arrows-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  margin-top: 20px;
+}
+
+#arrows {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px;
+  background-color: white;
+  border: 1px solid #cce7ff;
+  border-radius: 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#current-height {
+  font-size: 1.8em;
+  font-weight: 600;
+  color: #005c99;
+  margin-bottom: 20px;
 }
 
 #adjust-arrows {
   display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 10px;
+  flex-direction: row;
+  align-items: center;
+  gap: 20px;
 }
 
 .arrow {
-  font-size: 1.5em;
-  padding: 5px 15px;
+  background-color: white;
+  color: rgb(82, 153, 188);
+  font-size: 2em;
+  padding: auto;
+  width: 50px;
+  border: solid rgb(82, 153, 188) 1px;
+  border-radius: 50%;
   cursor: pointer;
-  border: 1px solid grey;
-  background-color: lightblue;
-  color: white;
-  border-radius: 5px;
-  transition: background-color 0.3s, transform 0.2s;
+  transition: background-color 0.3s ease, transform 0.1s ease;
 }
 
 .arrow:hover {
-  background-color: #b3d9ff;
-  transform: scale(1.1);
+  background-color: #005c99;
+  color: white;
 }
 
 .arrow:active {
-  background-color: #80bfff;
+  transform: scale(0.95);
 }
 
 
@@ -68,9 +92,9 @@ h2 {
   text-transform: uppercase;
   letter-spacing: 2.5px;
   font-weight: 500;
-  color: black;
+  color: rgb(82, 153, 188);
   background-color: white;
-  border: none;
+  border: solid rgb(82, 153, 188) 1px;
   border-radius: 45px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease 0s;
@@ -92,7 +116,6 @@ h2 {
 
 #save-profile-button {
   align-self: center;
-  background-color: rgb(82, 153, 188);
 }
 
 .create-profile-popup {
