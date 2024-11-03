@@ -10,24 +10,25 @@
     border-radius: 30px;
 }
 
+/* Leaderboard section styling */
+
 .leaderboard-box {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 5px;
 }
 
-h2 {
-    align-self: center;
-
+.leaderbord-title{
+    font-size: 55px;
+    margin-top: 15px;
+    margin-bottom: 21px;
 }
+
 .leaderboard-list-container {
     display: flex;
     width: 573px;
     height: 348px; 
-   
-    
-        
+    margin-top: 20px;
 }
 
 .leaderboard-list{
@@ -64,5 +65,47 @@ h2 {
     width: 570px;
     margin: 0px;
     font-size: x-large;
+
+}
+
+/* User stats section styling */
+
+.user-score {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    
+}
+
+.stats-container {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 345px;
+    height: 280px;
+    margin-left: 56px;
+    margin-right: 56px;
+    align-items: justify;
+    justify-content: center;
+
+}
+
+.stats-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    padding: 40px;
+    font-size: x-large;
     font-weight: bold;
+}
+
+.stats-title{
+    align-self: center;
+    font-size: 50px;
+    margin: 10px;
+}
+
+h3 {
+    opacity: 61%;
 }

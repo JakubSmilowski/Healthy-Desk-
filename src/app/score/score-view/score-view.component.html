@@ -1,6 +1,6 @@
 <div class="score-view" >
     <div class="leaderboard-box">
-        <h2>Leaderboard:</h2>
+        <span class="leaderbord-title">Leaderboard:</span>
         <div class="leaderboard-list-container container">
             <ol class="leaderboard-list">
                 <div class="user-info-container"  *ngFor="let user of users; let i = index">
@@ -16,23 +16,23 @@
         </div>
     </div>
     <div class="user-score">
-        <div class="stats-container container">
-            <h2>Week: </h2>
-            <div class="stats-text">
+        <div class="stats-container ">
+        <span class="stats-title">Week:</span>
+            <div class="stats-text container">
                 <h2>{{currentUserScore}}</h2>
                 <h3>Points</h3>
             </div>
         </div>
-        <div class="stats-container container">
-            <h2>Month: </h2>
-            <div class="stats-text">
+        <div class="stats-container">
+        <span class="stats-title">Month:</span>
+            <div class="stats-text container">
                 <h2>{{currentUserScore}}</h2>
                 <h3>Points</h3>
             </div>
         </div>
-        <div class="stats-container container">
-            <h2>Today:  </h2>
-            <div class="stats-text">
+        <div class="stats-container ">
+        <span class="stats-title">Today:</span>
+            <div class="stats-text container">
                 <h2>{{currentUserScore}}</h2>   
                 <h3>Points</h3>
             </div>
