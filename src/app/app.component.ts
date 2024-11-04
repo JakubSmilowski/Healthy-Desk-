@@ -23,7 +23,7 @@ export class AppComponent implements OnInit {
   constructor(private router: Router) {}
 
   isAccountMenuVisible: boolean = false;
-  isStreakPopupVisible: boolean = true;
+  isStreakPopupVisible: boolean = false;
   isNavigationVisible: boolean = false;
 
   toggleAccountVisibility() {
