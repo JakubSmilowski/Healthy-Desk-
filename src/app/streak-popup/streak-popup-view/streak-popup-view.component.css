@@ -1,12 +1,36 @@
 .popup-overlay{
-
+    margin: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .popup-content{
+    position: static;
+    background-color: #eeeeee;
+    border-radius: 30px;
+    padding: 30px;
+    width: 70%;
+    height: 70%;
+    z-index: 4;
+    animation: fall 0.5s linear forwards;
+}
+
+.popup-header{
 
 }
 
-.popup-header{}
+.popup-description{
 
-.popup-description{}
+}
+
+.description-group{
+
+}
 
