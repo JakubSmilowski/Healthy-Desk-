@@ -40,6 +40,9 @@ export class AppComponent implements OnInit {
   }
 
   checkIfNavigationVisible() {
-    this.isNavigationVisible = this.router.url !== '/login';
+    if (this.router.url !== '/login' && this.router.url !== '/register') {
+      this.isNavigationVisible = true;
+    }
+    else this.isNavigationVisible = false
   }
 }

@@ -5,6 +5,7 @@ import { LoginViewComponent } from './login/login-view/login-view.component';
 import { AlertViewComponent } from './alert/alert-view/alert-view.component';
 import { AnalyticsViewComponent } from './analytics/analytics-view/analytics-view.component';
 import { ScoreViewComponent } from './score/score-view/score-view.component';
+import { RegisterComponent } from './register/register-view/register.component';
 
 const routes: Routes = [
   {path: '', component: HomeViewComponent},
@@ -12,6 +13,7 @@ const routes: Routes = [
   {path: 'alert', component: AlertViewComponent},
   {path: 'analytics', component: AnalyticsViewComponent},
   {path: 'score', component: ScoreViewComponent},
+  {path: 'register', component: RegisterComponent},
 ];
 
 @NgModule({
