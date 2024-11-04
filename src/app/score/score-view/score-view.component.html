@@ -1,1 +1,41 @@
-<p>score-view works!</p>
+<div class="score-view" >
+    <div class="leaderboard-box">
+        <span class="leaderbord-title">Leaderboard:</span>
+        <div class="leaderboard-list-container container">
+            <ol class="leaderboard-list">
+                <div class="user-info-container"  *ngFor="let user of users; let i = index">
+                    <li>
+                        <div class="user-info">
+                            <span>{{user.name}}</span>
+                            <p>{{user.score}}</p>
+                        </div>
+                    </li>
+                    
+                </div>
+            </ol>
+        </div>
+    </div>
+    <div class="user-score">
+        <div class="stats-container ">
+        <span class="stats-title">Week:</span>
+            <div class="stats-text container">
+                <h2>{{weekScore}}</h2>
+                <h3>Points</h3>
+            </div>
+        </div>
+        <div class="stats-container ">
+            <span class="stats-title">Today:</span>
+            <div class="stats-text container">
+                <h2>{{todayScore}}</h2>   
+                <h3>Points</h3>
+            </div>
+        </div>
+        <div class="stats-container">
+        <span class="stats-title">Month:</span>
+            <div class="stats-text container">
+                <h2>{{monthScore}}</h2>
+                <h3>Points</h3>
+            </div>
+        </div>
+    </div>
+</div>

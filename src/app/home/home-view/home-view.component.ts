@@ -1,63 +1,72 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { HomeModule } from '../home.module';
 import { Profile } from '../../models/profile.model';
+import { HomeService } from '../home.service';
 
 @Component({
   selector: 'app-home-view',
   templateUrl: './home-view.component.html',
   styleUrl: './home-view.component.css'
 })
-export class HomeViewComponent {
-  deskHeight: number = 0;
-  height: number = 50;
-  profileTitle: string = '';
-  hours: number = 0;
-  minutes: number = 0;
+export class HomeViewComponent implements OnInit{
+  constructor(private homeService: HomeService) {}
 
-  profiles: Profile[] = [];
+  curDeskHeight: number = 68;
+  height: number = 68;
+  profileTitle: string = '';
+  hours!: number;
+  minutes!: number;
+  profiles!: Profile[];
+  isFormVisible: boolean = false;
+
+  ngOnInit(): void {
+      this.hours = this.homeService.hours;
+      this.minutes = this.homeService.minutes;
+      this.profiles = this.homeService.profiles;
+  }
+
+  createProfilePopUp() {
+    this.isFormVisible = !this.isFormVisible;
+  }
 
   private intervalId: any;
 
   validateHours() {
-    if (this.hours > 23) {
-      this.hours = 23;
-    } else if (this.hours < 0) {
-      this.hours = 0;
-    }
+    this.homeService.validateHours();
   }
 
   validateMinutes() {
-    if (this.minutes > 59) {
-      this.minutes = 59;
-    } else if (this.minutes < 0) {
-      this.minutes = 0;
-    }
+    this.homeService.validateMinutes();
   }
 
-   increaseHeight() {
-    if (this.deskHeight < 100) {
-      this.deskHeight += 1;
+  increaseHeight() {
+    if (this.curDeskHeight < 132) {
+      this.curDeskHeight += 1
+    } else if (this.curDeskHeight >= 132) {
+      this.curDeskHeight = 132
     }
   }
 
   decreaseHeight() {
-    if (this.deskHeight > 0) {
-      this.deskHeight -= 1;
+    if (this.curDeskHeight > 68) {
+      this.curDeskHeight -= 1;
+    } else if (this.curDeskHeight <= 68){
+      this.curDeskHeight = 68;
     }
   }
 
   startIncrease() {
     this.intervalId = setInterval(() => {
-      if (this.deskHeight < 100) {
-        this.deskHeight += 1;
+      if (this.curDeskHeight < 100) {
+        this.curDeskHeight += 1;
       }
     }, 100);
   }
 
   startDecrease() {
     this.intervalId = setInterval(() => {
-      if (this.deskHeight > 0) {
-        this.deskHeight -= 1;
+      if (this.curDeskHeight > 0) {
+        this.curDeskHeight -= 1;
       }
     }, 100);
   }
@@ -82,6 +91,7 @@ export class HomeViewComponent {
     this.profiles.push(newProfile);
 
     this.clearForm();
+    this.isFormVisible = false;
   }
 
   clearForm() {

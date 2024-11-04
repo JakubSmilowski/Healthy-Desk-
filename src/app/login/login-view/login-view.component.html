@@ -1,1 +1,19 @@
 <p>login-view works!</p>
+<section id="login">
+    <p id="stand-every">Your Height (cm):</p>
+    <input id="userHeight" [(ngModel)]="userHeight" type="number" min="50" max="210" step="1" placeholder="50"/>
+    <p>Your desk will rise every: </p>
+    <form id="timer-form">
+        <div class="time">
+            <label for="hours">Hours</label>
+            <input id="hours" name="hours" type="number" min="0" max="23"
+            [(ngModel)]="hours" (ngModelChange)="validateHours()"/>
+        </div>
+        <div class="time">
+            <label for="minutes">Minutes</label>
+            <input id="minutes" name="minutes" type="number" min="0" max="59" 
+            [(ngModel)]="minutes" (ngModelChange)="validateMinutes()"/>
+        </div>
+    </form>
+    <button (click)="register()">Register</button>
+</section>

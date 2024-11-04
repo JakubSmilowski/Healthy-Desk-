@@ -1,4 +1,25 @@
 /* You can add global styles to this file, and also import other style files */
+:root{
+    --lightBlue:rgb(132, 198, 220);
+    --darkBlue: #005c99;
+    --primary: #C8E8FF;
+    --secondary: #4F99B9;
+    --tertiary: #AFDFF3;
+    --quaternary: #DCFBF2;
+    --textColor: black;
+}
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+html, body { 
+    height:100%; 
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; 
+    background-image: linear-gradient( to bottom, 
+    rgba(220, 251, 242, 0.1) 9%,
+    rgba(175,223,243,0.5) 71% ,
+    rgba(134,206,237,0.85) 85% ,
+    rgba(94,190,232,1) 100% 
+    );}

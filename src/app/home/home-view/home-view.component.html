@@ -1,37 +1,28 @@
 <body>
-    <h2>Your Profiles</h2>
-    <section id="arrows">
-        <div id="adjust-arrows">
-            <div class="arrows-container">
-                <div id="height-display">
-                   Current Height: {{ deskHeight }} cm
-                </div>
-                <div id="adjust-arrows-buttons">
-                    <button class="arrow" id="increase-height" 
-                    (mousedown)="startIncrease()"
-                    (mouseup)="stopAdjustment()"
-                    (mouseleave)="stopAdjustment()"
-                    (click)="increaseHeight()">▲</button>
-                    <button class="arrow" id="decrease-height"
-                    (mousedown)="startDecrease()"
-                    (mouseup)="stopAdjustment()"
-                    (mouseleave)="stopAdjustment()"(click)="decreaseHeight()">▼</button>
-                </div>
+    <div id="arrows-container">
+        <section id="arrows">
+            <div id="current-height">{{ curDeskHeight }} cm</div>
+            <div id="adjust-arrows">
+                <button class="arrow" id="increase-height" (click)="increaseHeight()">▲</button>
+                <button class="arrow" id="decrease-height" (click)="decreaseHeight()">▼</button>
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
+    <div>
+    <button class="button" id="add-profile-button" (click)="createProfilePopUp()">Add Profile</button>
     <section id="profiles-section">
-        <div>
-            <h5>Create New Profile</h5>
+        <div *ngIf="isFormVisible" class="create-profile-popup">
             <div id="create-profile">
+                <button (click)="createProfilePopUp()" class="delete-button" id="close-create">x</button>
                 <p id="title">Profile title:</p>
-                <input id="title-input" [(ngModel)]="profileTitle" type="text" placeholder="No Title">
+                <input id="title-input" [(ngModel)]="profileTitle" type="text" placeholder="No Title" minlength="5" maxlength="15">
 
                 <div id="set-height">
-                    <label for="height-slider">Table Height (cm): {{ height }}</label>
-                    <input id="height-slider" [(ngModel)]="height" type="range" min="0" max="100" step="1" />
-                </div>                
-                <p id="stand-every">Rise desk every:</p>
+                    <label for="height-slider">Table height: <span class="height-value">{{height}}cm</span></label>
+                    <input id="height-slider" [(ngModel)]="height" type="range" min="68" max="132" step="1" />
+                </div>
+                
+                <p id="stand-every">Change desk height to <span class="height-value">{{height}}cm </span> every:</p>
                 <form id="timer-form">
                     <div class="time">
                         <label for="hours">Hours</label>
@@ -44,21 +35,19 @@
                         [(ngModel)]="minutes" (ngModelChange)="validateMinutes()"/>
                     </div>
                 </form>
-                <button id="save-profile-button" (click)="saveProfile()">Save Profile</button>
+                <button class="button" id="save-profile-button" (click)="saveProfile()">Save</button>
             </div>
         </div>
-        <div>
-            <h5>Profiles</h5>
-            <div id="user-profiles">
-                <div *ngFor="let profile of profiles; let i = index" class="profile">
-                    <div id="title-and-button">
-                        <h6>{{ profile.title }}</h6>
-                        <button (click)="removeProfile(i)">x</button>
-                    </div>
-                    <p>Height: {{ profile.height }} cm</p>
-                    <p>Time: {{ profile.time }}</p>
+        <div id="user-profiles">
+            <div *ngFor="let profile of profiles; let i = index" class="profile">
+                <div id="title-and-button">
+                    <h6>{{ profile.title }}</h6>
+                    <button class="delete-button" (click)="removeProfile(i)">x</button>
                 </div>
+                <p>Height: {{ profile.height }}cm</p>
+                <p>Time: {{ profile.time }}</p>
             </div>
         </div>
     </section>
+    </div>
 </body>
