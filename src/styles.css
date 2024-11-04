@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 :root{
     --lightBlue:rgb(132, 198, 220);
+    --darkBlue: #005c99;
     --primary: #C8E8FF;
     --secondary: #4F99B9;
     --tertiary: #AFDFF3;
