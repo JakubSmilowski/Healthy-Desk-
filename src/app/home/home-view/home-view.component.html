@@ -2,9 +2,22 @@
     <h2>Your Profiles</h2>
     <section id="arrows">
         <div id="adjust-arrows">
-            <button class="arrow" id="increase-height" (click)="increaseHeight()">▲</button>
-            <span id="current-height">{{ deskHeight }} cm</span>
-            <button class="arrow" id="decrease-height" (click)="decreaseHeight()">▼</button>
+            <div class="arrows-container">
+                <div id="height-display">
+                   Current Height: {{ deskHeight }} cm
+                </div>
+                <div id="adjust-arrows-buttons">
+                    <button class="arrow" id="increase-height" 
+                    (mousedown)="startIncrease()"
+                    (mouseup)="stopAdjustment()"
+                    (mouseleave)="stopAdjustment()"
+                    (click)="increaseHeight()">▲</button>
+                    <button class="arrow" id="decrease-height"
+                    (mousedown)="startDecrease()"
+                    (mouseup)="stopAdjustment()"
+                    (mouseleave)="stopAdjustment()"(click)="decreaseHeight()">▼</button>
+                </div>
+            </div>
         </div>
     </section>
     <section id="profiles-section">

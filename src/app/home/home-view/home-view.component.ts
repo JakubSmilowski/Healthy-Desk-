@@ -16,6 +16,8 @@ export class HomeViewComponent {
 
   profiles: Profile[] = [];
 
+  private intervalId: any;
+
   validateHours() {
     if (this.hours > 23) {
       this.hours = 23;
@@ -42,6 +44,26 @@ export class HomeViewComponent {
     if (this.deskHeight > 0) {
       this.deskHeight -= 1;
     }
+  }
+
+  startIncrease() {
+    this.intervalId = setInterval(() => {
+      if (this.deskHeight < 100) {
+        this.deskHeight += 1;
+      }
+    }, 100);
+  }
+
+  startDecrease() {
+    this.intervalId = setInterval(() => {
+      if (this.deskHeight > 0) {
+        this.deskHeight -= 1;
+      }
+    }, 100);
+  }
+
+  stopAdjustment() {
+    clearInterval(this.intervalId);
   }
 
   saveProfile() {

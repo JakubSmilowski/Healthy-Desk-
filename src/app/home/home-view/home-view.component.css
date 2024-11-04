@@ -98,12 +98,14 @@ h5 {
 
 .arrow {
   font-size: 1.5em;
-  padding: 5px 15px;
+  width: 90px;                   /* Set a wider fixed width */
+  height: 60px;                  /* Set a taller fixed height */
+  padding: 10px;                 /* Adjust padding */
   cursor: pointer;
-  border: 1px solid grey;
-  background-color: lightblue;
+  border: 2px solid rgb(199, 199, 199);
+  background-color: rgb(221, 221, 221);
   color: white;
-  border-radius: 5px;
+  border-radius: 10px;
   transition: background-color 0.3s, transform 0.2s;
 }
 
@@ -219,5 +221,24 @@ h5 {
   border-radius: 20px;
   background-color: lightblue;
 }
-
+.arrows-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;      
+  padding: 10px;
+  border: rgb(136, 136, 136);
+  border-radius: 10px;
+  background-color: lightblue;
+  width: fit-content;
+  box-shadow: rgb(136, 136, 136) 0 10px 20px -10px;
+}
+#height-display {
+  font-weight: 600;
+  margin-bottom: 10px;
+  text-align: center;
+}
+#adjust-arrows-buttons {
+  display: flex;
+  gap: 10px;
+}
 
