@@ -2,7 +2,7 @@
 .header-title {
     position: absolute;
     left:30px;
-    font-size: 28px;
+    font-size: 40px;
     cursor: pointer;
     color: var(--lightBlue);
     font-weight: bold;
@@ -26,7 +26,7 @@
 
 hr {
     width: 90vh;
-    border-width: 2px;  
+    border-width: 3px;  
     color:var(--textColor);
     align-self: center;
 }
@@ -44,15 +44,47 @@ hr {
 .custom-toolbar a {
     color:var(--textColor); 
     margin: 0 10px; 
-    font-weight: normal;
-    font-size: large;
+    font-weight: 400;
+    font-size: 25px;
     background-image: none;
     background-color: transparent;
 }
 
-#userIcon {
+.profileSection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
     position: absolute;
     right: 30px;
-    font-size: 30px;
-    cursor: pointer;
 }
+
+.border {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    border: 10px solid var(--darkBlue);
+    padding: 5px;
+}
+
+
+#userIcon {
+    right: 30px;
+    font-size: 40px;
+    cursor: pointer;
+    margin-left: 15px;
+}
+
+#numberStreak {
+    font-size: 40px;
+    font-weight: 500;
+    cursor: pointer;
+    color: var(--darkBlue);
+
+}
+#streakIcon {
+    color: orange;
+    stroke: red;
+    font-size: 40px;
+}
+
+
