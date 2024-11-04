@@ -1,9 +1,9 @@
 <!--Streak Popup -->
 <div class="popup-overlay" (click)="onClose()">
-  <div class="popup-content">
+  <div class="popup-content" (click)="$event.stopPropagation()">
     <div class="popup-header">
       <h5>Streak</h5>
-      <p class="close-popup-button" (click)="onClose()">X</p>
+      <p class="close-popup-button" (click)="onClose()" >X</p>
     </div>
     <hr class="mt-0">
     <div class="popup-description">

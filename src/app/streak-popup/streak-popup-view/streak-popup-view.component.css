@@ -65,3 +65,6 @@ hr {
 
 }
 
+.close-popup-button {
+    cursor: pointer;
+}
