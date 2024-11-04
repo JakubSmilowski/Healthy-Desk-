@@ -1,7 +1,8 @@
 
 <!-- Header -->
 
-<app-navigation-view *ngIf="isNavigationVisible" (toggleAccountVisibility)="toggleAccountVisibility()"></app-navigation-view>
+<app-navigation-view *ngIf="isNavigationVisible" (toggleAccountVisibility)="toggleAccountVisibility()" (toggleeStreakVisibility)="toggleeStreakVisibility()"></app-navigation-view>
+<app-streak-popup-view *ngIf="isStreakPopupVisible" (close)="toggleeStreakVisibility()"></app-streak-popup-view>
 <app-account-popup-view *ngIf="isAccountMenuVisible" (close)="toggleAccountVisibility()"></app-account-popup-view>
 <router-outlet></router-outlet>
 

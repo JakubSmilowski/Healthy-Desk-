@@ -9,9 +9,17 @@ import { NavigationModule } from '../navigation.module';
 export class NavigationViewComponent {
 
   @Output() toggleAccountVisibility = new EventEmitter<void>();
+  @Output() toggleeStreakVisibility = new EventEmitter<void>();
 
   accountClicked() {
     this.toggleAccountVisibility.emit();
   }
+
+  streakClicked() {
+    console.log("Streak clicked");
+    this.toggleeStreakVisibility.emit();
+  }
+
+
 
 }

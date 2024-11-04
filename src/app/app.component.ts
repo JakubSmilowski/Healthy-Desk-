@@ -23,12 +23,20 @@ export class AppComponent implements OnInit {
   constructor(private router: Router) {}
 
   isAccountMenuVisible: boolean = false;
-  
-  
+  isStreakPopupVisible: boolean = false;
   isNavigationVisible: boolean = false;
 
   toggleAccountVisibility() {
     this.isAccountMenuVisible = !this.isAccountMenuVisible;
+  }
+
+  // streak visibility
+  toggleeStreakVisibility() {
+    console.log("Streak toggled");
+    this.isStreakPopupVisible = !this.isStreakPopupVisible;
+    if(this.isAccountMenuVisible){
+      this.toggleAccountVisibility();
+    }
   }
 
   checkIfNavigationVisible() {
