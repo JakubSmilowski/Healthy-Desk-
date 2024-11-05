@@ -9,8 +9,6 @@
     --textColor: black;
 }
 
-
-
 html, body { 
     height:100%; 
     background-repeat: no-repeat;
@@ -23,3 +21,150 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif;
     rgba(134,206,237,0.85) 85% ,
     rgba(94,190,232,1) 100% 
     );}
+
+/* Main content */
+.container {
+    flex: 1; /* Allows the main content to grow and pushes footer down */
+    padding: 20px;
+}
+/* Footer styles */
+footer {
+    width: 100%;
+    bottom: 0;
+    background: linear-gradient(to right, rgb(53, 85, 64));
+    color: #fff;
+    padding: 10px 0 40px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+/* Layout */
+.row {
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.col {
+    flex-basis: 1;
+    padding: 10px;
+    max-width: 33%;
+    box-sizing: border-box;
+}
+
+.col h3 {
+    width: fit-content;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+/* Form and input styling */
+.email-id {
+    width: fit-content;
+    border-bottom: 1px solid #ccc;
+    margin: 20px 0;
+}
+
+form input {
+    width: 100%;
+    background: transparent;
+    color: #ccc;
+    border: 0;
+    outline: none;
+}
+
+/* List styling */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Social media icons styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.wrapper.button {
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.wrapper.button:hover {
+    width: 200px;
+}
+
+.wrapper.button .icon {
+    display: inline-block;
+    height: 60px;
+    width: 60px;
+    text-align: center;
+    border-radius: 50px;
+    box-sizing: border-box;
+    line-height: 60px;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper.button:nth-child(1):hover .icon {
+    background: #4267b2;
+}
+
+.wrapper.button:nth-child(2):hover .icon {
+    background: #1da1f2;
+}
+
+.wrapper.button:nth-child(3):hover .icon {
+    background: #e1306c;
+}
+
+.wrapper.button:nth-child(4):hover .icon {
+    background: #ff0000;
+}
+
+.wrapper.button .icon i {
+    font-size: 25px;
+    line-height: 60px;
+    transition: all 0.3s ease-out;
+}
+
+.wrapper.button:nth-child(1) span {
+    color: #4267b2;
+}
+
+.wrapper.button:nth-child(2) span {
+    color: #1da1f2;
+}
+
+.wrapper.button:nth-child(3) span {
+    color: #e1306c;
+}
+
+.wrapper.button:nth-child(4) span {
+    color: #ff0000;
+}
+
+/* Separator and copyright */
+hr {
+    width: 90%;
+    border: 0;
+    border-bottom: 1px solid #ccc;
+    margin: 20px auto;
+    display: flex;
+}
+
+.copyright {
+    text-align: center;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
