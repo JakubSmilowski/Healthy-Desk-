@@ -53,7 +53,7 @@ export class HomeViewComponent implements OnInit {
 
   onHoldIncrease() {
     this.clearInterval();
-    this.holdTime = 50;
+    this.holdTime = 75;
 
     this.intervalId = setInterval(() => {
       this.increaseHeight();
@@ -64,7 +64,7 @@ export class HomeViewComponent implements OnInit {
 
   onHoldDecrease() {
     this.clearInterval();
-    this.holdTime = 50;
+    this.holdTime = 75;
 
     this.intervalId = setInterval(() => {
       this.decreaseHeight();
