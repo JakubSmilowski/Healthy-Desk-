@@ -1,14 +1,13 @@
-import { Component, OnInit } from '@angular/core';
-import { HomeModule } from '../home.module';
-import { Profile } from '../../models/profile.model';
+import { Component, OnInit } from '@angular/core'; 
 import { HomeService } from '../home.service';
+import { Profile } from '../../models/profile.model';
 
 @Component({
   selector: 'app-home-view',
   templateUrl: './home-view.component.html',
-  styleUrl: './home-view.component.css'
+  styleUrls: ['./home-view.component.css']
 })
-export class HomeViewComponent implements OnInit{
+export class HomeViewComponent implements OnInit {
   constructor(private homeService: HomeService) {}
 
   curDeskHeight: number = 68;
@@ -19,10 +18,13 @@ export class HomeViewComponent implements OnInit{
   profiles!: Profile[];
   isFormVisible: boolean = false;
 
+  private intervalId: any;
+  private holdTime: number = 200; // Initial delay
+
   ngOnInit(): void {
-      this.hours = this.homeService.hours;
-      this.minutes = this.homeService.minutes;
-      this.profiles = this.homeService.profiles;
+    this.hours = this.homeService.hours;
+    this.minutes = this.homeService.minutes;
+    this.profiles = this.homeService.profiles;
   }
 
   createProfilePopUp() {
@@ -39,17 +41,47 @@ export class HomeViewComponent implements OnInit{
 
   increaseHeight() {
     if (this.curDeskHeight < 132) {
-      this.curDeskHeight += 1
-    } else if (this.curDeskHeight >= 132) {
-      this.curDeskHeight = 132
+      this.curDeskHeight += 1;
     }
   }
 
   decreaseHeight() {
     if (this.curDeskHeight > 68) {
       this.curDeskHeight -= 1;
-    } else if (this.curDeskHeight <= 68){
-      this.curDeskHeight = 68;
+    }
+  }
+
+  onHoldIncrease() {
+    this.clearInterval();
+    this.holdTime = 50;
+
+    this.intervalId = setInterval(() => {
+      this.increaseHeight();
+      this.holdTime = Math.max(20, this.holdTime - 20); // Speed up increment
+      this.clearAndRestartInterval(() => this.onHoldIncrease());
+    }, this.holdTime);
+  }
+
+  onHoldDecrease() {
+    this.clearInterval();
+    this.holdTime = 50;
+
+    this.intervalId = setInterval(() => {
+      this.decreaseHeight();
+      this.holdTime = Math.max(20, this.holdTime - 20); // Speed up decrement
+      this.clearAndRestartInterval(() => this.onHoldDecrease());
+    }, this.holdTime);
+  }
+
+  clearAndRestartInterval(callback: () => void) {
+    clearInterval(this.intervalId);
+    this.intervalId = setInterval(callback, this.holdTime);
+  }
+
+  clearInterval() {
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
+      this.intervalId = null;
     }
   }
 
