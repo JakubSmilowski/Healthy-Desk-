@@ -19,7 +19,7 @@ export class HomeViewComponent implements OnInit {
   isFormVisible: boolean = false;
 
   private intervalId: any;
-  private holdTime: number = 200; // Initial delay
+  private holdTime: number = 200;
 
   ngOnInit(): void {
     this.hours = this.homeService.hours;
@@ -57,7 +57,7 @@ export class HomeViewComponent implements OnInit {
 
     this.intervalId = setInterval(() => {
       this.increaseHeight();
-      this.holdTime = Math.max(20, this.holdTime - 20); // Speed up increment
+      this.holdTime = Math.max(20, this.holdTime - 20);
       this.clearAndRestartInterval(() => this.onHoldIncrease());
     }, this.holdTime);
   }
@@ -68,7 +68,7 @@ export class HomeViewComponent implements OnInit {
 
     this.intervalId = setInterval(() => {
       this.decreaseHeight();
-      this.holdTime = Math.max(20, this.holdTime - 20); // Speed up decrement
+      this.holdTime = Math.max(20, this.holdTime - 20);
       this.clearAndRestartInterval(() => this.onHoldDecrease());
     }, this.holdTime);
   }
