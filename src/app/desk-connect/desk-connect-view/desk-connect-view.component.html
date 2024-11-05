@@ -1,0 +1,16 @@
+<button (click)="loadDesks()">Press to load available desks</button>
+<br><br>
+<ul>
+    <li *ngFor="let desk of desks">
+        <button (click)="loadDeskDetails(desk)">{{ desk }}</button>
+    </li>
+</ul>
+<br>
+<div *ngIf="deskInfo">
+    <p>ID: {{ deskInfo.id }}</p>
+    <p>Name: {{ deskInfo.name }}</p>
+    <p>Manufacturer: {{ deskInfo.manufacturer }}</p>
+    <p>Position: {{ deskInfo.position }}</p>
+    <p>Speed: {{ deskInfo.speed }}</p>
+    <p>Status: {{ deskInfo.status }}</p>
+</div>

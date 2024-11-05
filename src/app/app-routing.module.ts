@@ -6,6 +6,7 @@ import { AlertViewComponent } from './alert/alert-view/alert-view.component';
 import { AnalyticsViewComponent } from './analytics/analytics-view/analytics-view.component';
 import { ScoreViewComponent } from './score/score-view/score-view.component';
 import { RegisterComponent } from './register/register-view/register.component';
+import { DeskConnectViewComponent } from './desk-connect/desk-connect-view/desk-connect-view.component';
 
 const routes: Routes = [
   {path: '', component: HomeViewComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'analytics', component: AnalyticsViewComponent},
   {path: 'score', component: ScoreViewComponent},
   {path: 'register', component: RegisterComponent},
+  {path: 'connect', component: DeskConnectViewComponent}
 ];
 
 @NgModule({
