@@ -1,0 +1,16 @@
+<head>
+    <meta charset="utf-8">
+    <title>Alert Popup</title>
+    <link rel="stylesheet" href="alert-popup-view.component.css" type="text/css">
+    <script src="alert-popup-view.component.ts"></script>
+</head>
+<body>
+    <div *ngIf="showPopup" id="popup-container">
+        <h1>Alert: Change position</h1>
+        <h2>Do you wish to change position?</h2>
+        <h3>Do you accept this alert?</h3>
+        <p>You will earn x amount of points if you accept</p>
+        <button id="AcceptAlert" (click)="onAccept()">Accept</button>
+        <button id="DenyAlert" (click)="onDeny()">Deny</button>
+    </div>
+</body>

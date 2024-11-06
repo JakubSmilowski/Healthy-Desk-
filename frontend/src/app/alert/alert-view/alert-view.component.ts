@@ -7,5 +7,5 @@ import { AlertModule } from '../alert.module';
   styleUrl: './alert-view.component.css'
 })
 export class AlertViewComponent {
-
+  
 }
