@@ -16,7 +16,7 @@ export class AlertPopupViewComponent implements OnInit {
       //Timer for popup
       setTimeout(() => {
         this.showPopup = true;
-      }, 1000) //Display popup after x amount of sec
+      }, 5000) //Display popup after 5 sec
   }
 
   onAccept(): void {

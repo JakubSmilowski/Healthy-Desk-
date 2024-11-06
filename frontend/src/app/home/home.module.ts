@@ -16,6 +16,9 @@ import { SharedModule } from '../shared/shared.module';
     FormsModule,
     AccountPopupModule,
     SharedModule
+  ],
+  exports: [
+    HomeViewComponent
   ]
 })
 export class HomeModule { }
