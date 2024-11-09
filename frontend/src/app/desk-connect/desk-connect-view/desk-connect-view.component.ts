@@ -7,21 +7,28 @@ import { Desk, DeskApiService } from '../../services/desk-api.service';
   styleUrl: './desk-connect-view.component.css'
 })
 export class DeskConnectViewComponent {
-  desks: string[] = [];
+  deskIds: string[] = [];
+  desksInfos: Desk[] = [];
+  isLoading: boolean = false;
 
   constructor(private deskApiService: DeskApiService) {}
   
-  loadDesks() {
-    this.deskApiService.getDesks().subscribe( data => {
-        this.desks = data;
+  loadDesksAndInfos() {
+    this.deskIds = [];
+    this.desksInfos = [];
+    this.isLoading = true;
+
+    // Gets all desk ID's
+    this.deskApiService.getDesks().subscribe(ids => {
+      this.deskIds = ids;
+
+      //For each ID it got, gets details about the desk and adds them to desksInfos array
+      this.deskIds.forEach(id => {
+        this.deskApiService.getDeskInfo(id).subscribe(deskData => {
+          this.desksInfos.push(deskData);
+        });
+      });
+      this.isLoading = false;
     });
-  }
-
-  deskInfo: Desk | null=null;
-
-  loadDeskDetails(id: string) {
-    this.deskApiService.getDeskInfo(id).subscribe ( data => {
-      this.deskInfo = data;
-    })
   }
 }
