@@ -2,31 +2,35 @@
     <h1>Alert setup</h1>
     <h2>Personalise your alert settings to fit your needs.</h2>
 
-    <div 
-        class="popover-container">
-        <button
-            class="button button1">Turn alerts on/off <!--state dependent-->
-        </button><br>
-    </div>
+    <section class="alertBox">
+            <button
+                class="buttonsFirst"
+                id="AlertOnOff">Turn alerts on/off <!--state dependent-->
+            </button><br>
 
-    <div
-        class="popover-container">
-        <button
-            class="button button2"
-            popovertarget="MotivationLevel1"
-            popovertargetaction="toggle">Motivation level
-        </button><br>
-        <p popover id="MotivationLevel1">Intense</p>
-        <!--<p popover id="MotivationLevel2">Intense</p>-->
-    </div>
+            <mat-expansion-panel class="toggles">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Motivation level
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
 
-    <div
-        class="popover-container">
-        <button
-            class="button button3"
-            popovertarget="AlertIntensity"
-            popovertargetaction="toggle">Alert intensity
-        </button>
-        <p popover id="AlertIntensity">soft</p>
-    </div>
+                <button class="secondButtons">Low</button><br>
+                <button class="secondButtons">Moderate</button><br>
+                <button class="secondButtons">Extreme</button>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel class="toggles">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        Alert Intensity
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <button class="secondButtons">Low</button>
+                <button class="secondButtons">Moderate</button>
+                <button class="secondButtons">Extreme</button>
+            </mat-expansion-panel>
+
+    </section>
 </body>
