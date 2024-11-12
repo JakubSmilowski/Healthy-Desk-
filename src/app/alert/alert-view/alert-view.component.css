@@ -1,0 +1,44 @@
+body {
+    background-color: rgba(0,0,255, 0.3);
+}
+
+.alertBox {
+    background-color: rgb(255, 255, 255);
+    border: 2px solid black;
+    margin: 10%;
+    display: flex;
+    padding-top: 1%;
+    padding-bottom: 3%;
+}
+
+h1, h2 {
+    text-align: center;
+    color: rgb(0, 0, 0);
+}
+
+h1 {
+    padding-top: 3%;
+    font-size: 55px;
+}
+
+h2 {
+    font-size: 20px;
+}
+
+.toggles, .buttonsFirst {
+    border-radius: 5%;
+    padding: 1%;
+    margin: 4%; 
+    color: rgb(0, 0, 0);
+    background-color: rgb(244, 235, 235);
+    border: 2px solid black;
+}
+
+.secondButtons {
+
+    color: rgb(0, 0, 0);
+    background-color: rgb(174, 174, 193);
+
+    border-radius: 10%;
+    margin: 1%;
+}

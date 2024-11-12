@@ -5,16 +5,15 @@ body {
 }
 
 #popup-container {
-    background-color: rgb(84, 145, 210);
-    border: 5px, solid #000000;
-    padding: 8px;
+    background-color: rgb(112, 150, 207);
+    border: 3px, solid #000000;
+    padding: 5px;
     text-align: center;
     border-radius: 5%;
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    z-index: 1000;
 }
 
 h1 {
@@ -23,12 +22,6 @@ h1 {
 }
 
 h2 {
-    padding: 20px;
-    font-size: medium;
-}
-
-h3 {
-    padding: 2px;
     font-size: medium;
 }
 
@@ -39,27 +32,27 @@ h1, h2, h3 {
 p {
     padding-bottom: 10px;
 }
-*/
+
 
 #AcceptAlert, #DenyAlert {
-    padding: 10px;
+    padding: 5px;
     border: 2px  solid black;
-    border-radius: 15%;
-    cursor: pointer;
+    border-radius: 12%;
+    margin: 1%;
 }
 
 #AcceptAlert {
-    background-color: rgb(37, 143, 97);
+    background-color: rgb(1, 201, 61);
 }
 
 #AcceptAlert:hover {
-    background-color: rgb(0, 255, 145);
+    background-color: rgb(63, 205, 106);
 }
 
 #DenyAlert {
-    background-color: rgb(255, 0, 51);
+    background-color: rgb(255, 0, 0);
 }
 
 #DenyAlert:hover {
-    background-color: rgb(247, 82, 82);
+    background-color: rgb(252, 52, 52);
 }
