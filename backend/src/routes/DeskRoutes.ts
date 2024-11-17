@@ -4,10 +4,10 @@ import { DeskApiService } from '../services/DeskServices';
 
 const deskApiService = new DeskApiService();
 const deskController = new DeskController(deskApiService);
-const deskRoutes = express.Router();
+const deskRouter = express.Router();
 
 // Route to get all desks
-deskRoutes.get('/desks', async (req, res) => {
+deskRouter.get('/desks', async (req, res) => {
     try {
         await deskController.loadDesks();
         res.json(deskController.desks);
@@ -18,7 +18,7 @@ deskRoutes.get('/desks', async (req, res) => {
 });
 
 // Route to get details of a specific desk by ID
-deskRoutes.get('/desks/:deskId', async (req, res) => {
+deskRouter.get('/desks/:deskId', async (req, res) => {
     const { deskId } = req.params;
     try {
         await deskController.loadDeskDetails(deskId);
@@ -29,4 +29,4 @@ deskRoutes.get('/desks/:deskId', async (req, res) => {
     }
 });
 
-export default deskRoutes;
+export default deskRouter;
