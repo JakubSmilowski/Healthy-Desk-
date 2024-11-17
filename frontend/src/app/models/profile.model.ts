@@ -3,4 +3,5 @@ export interface Profile {
     deskHeight: number;
     time: string;
     userid: number;
+    motivationLevel: string;
   }
