@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NavigationModule } from './navigation/navigation.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginViewComponent } from './login/login-view/login-view.component';
+import { LoginModule } from './login/login.module';
 import { HomeModule } from './home/home.module';
 import { FormsModule } from '@angular/forms';
 import { AccountPopupModule } from './account-popup/account-popup.module';
@@ -16,10 +16,10 @@ import { DeskConnectModule } from './desk-connect/desk-connect.module';
 @NgModule({
   declarations: [
     AppComponent,
-    LoginViewComponent,
     RegisterComponent,
   ],
   imports: [
+    LoginModule,
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
