@@ -121,3 +121,9 @@ form {
   text-decoration: none;
   margin: 0 8px;
 }
+
+.invalid{
+  
+  color: red;
+  border: solid red 1px;
+}
