@@ -18,6 +18,7 @@ export class HomeViewComponent implements OnInit {
   minutes!: number;
   profiles!: Profile[];
   motivationLevel: string = ''; 
+  motivationLevel: string = ''; 
   isFormVisible: boolean = false;
 
   private intervalId: any;
@@ -27,6 +28,7 @@ export class HomeViewComponent implements OnInit {
     this.hours = this.homeService.hours;
     this.minutes = this.homeService.minutes;
     this.profiles = this.homeService.profiles;
+    this.motivationLevel = this.homeService.motivationLevel;
     this.motivationLevel = this.homeService.motivationLevel;
   }
 
@@ -117,6 +119,10 @@ export class HomeViewComponent implements OnInit {
 
     const newProfile: Profile = {
       title: this.profileTitle,
+      height: this.height,
+      time: time,
+      motivationLevel: this.motivationLevel
+
       height: this.height,
       time: time,
       motivationLevel: this.motivationLevel
