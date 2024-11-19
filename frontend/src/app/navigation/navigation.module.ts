@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NavigationViewComponent } from './navigation-view/navigation-view.component';
-import { MatToolbarModule} from '@angular/material/toolbar';
-import { MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatDivider, MatDividerModule} from '@angular/material/divider';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+
 @NgModule({
   declarations: [
     NavigationViewComponent,
-    
   ],
   imports: [
     CommonModule,
@@ -21,7 +21,4 @@ import {MatDivider, MatDividerModule} from '@angular/material/divider';
     NavigationViewComponent
   ]
 })
-export class NavigationModule {
-  
-
- }
+export class NavigationModule { }

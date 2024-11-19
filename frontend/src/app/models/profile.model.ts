@@ -1,6 +1,8 @@
 export interface Profile {
     title: string;
-    height: number;
+    deskHeight: number;
     time: string;
     motivationLevel: string;
+    userid: number;
+
   }

@@ -24,7 +24,6 @@ export class HomeService {
     if (this.minutes > 59) this.minutes = 59; 
     else if (this.minutes < 0) this.minutes = 0;
   }
-
   saveDefaultProfile() {
     const time = `${this.hours}h ${this.minutes}m`;
 
@@ -49,7 +48,6 @@ export class HomeService {
       console.log(profile)
     });
   }
-
   isUserStanding(deskHeight: number, standingHeight: number) {
     if((deskHeight > standingHeight - 10) && (deskHeight < standingHeight + 10))
       return true;

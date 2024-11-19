@@ -1,19 +1,67 @@
-<p>register works!</p>
-<section id="register">
-    <p id="stand-every">Your Height (cm):</p>
-    <input id="userHeight" [(ngModel)]="userHeight" type="number" min="150" max="210" step="1" placeholder="50"/>
-    <p>Your desk will rise every: </p>
-    <form id="timer-form">
-        <div class="time">
-            <label for="hours">Hours</label>
-            <input id="hours" name="hours" type="number" min="0" max="23"
-            [(ngModel)]="hours" (ngModelChange)="validateHours()"/>
-        </div>
-        <div class="time">
-            <label for="minutes">Minutes</label>
-            <input id="minutes" name="minutes" type="number" min="0" max="59" 
-            [(ngModel)]="minutes" (ngModelChange)="validateMinutes()"/>
-        </div>
+<link
+  href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+  rel="stylesheet"
+/>
+
+<!-- Registration Form and Height/Timer Form in the same box -->
+<div class="container">
+  <div class="form-box register">
+    <form (ngSubmit)="register()">
+      <h1>Registration</h1>
+
+      <!-- Username Input -->
+      <div class="input-box">
+        <input type="text" placeholder="Username" [(ngModel)]="username" name="username" required />
+        <i class="bx bx-user"></i>
+      </div>
+
+      <!-- Email Input -->
+      <div class="input-box">
+        <input type="email" placeholder="Email" [(ngModel)]="email" name="email" required />
+        <i class="bx bx-envelope"></i>
+      </div>
+
+      <!-- Password Input -->
+      <div class="input-box">
+        <input type="password" placeholder="Password" [(ngModel)]="password" name="password" required />
+        <i class="bx bxs-lock-alt"></i>
+      </div>
+
+      <!-- Your Height Section -->
+      <label for="userHeight">Your Height (cm)</label>
+      <div class="input-box">
+        <input
+          id="userHeight"
+          name="height"
+          [(ngModel)]="height"
+          type="number"
+          min="140"
+          max="210"
+          step="1"
+          required
+        />
+      </div>
+      <div>
+        <label for="mot_lvl">How Motivated Are You To Change Your Healthy Habits?</label>
+        <select id="mot_lvl" name="mot_lvl" [(ngModel)]="mot_lvl" required>
+          <option value="low">Not Motivated</option>
+          <option value="medium" selected>Motivated</option>
+          <option value="high">Very Motivated</option>
+        </select>
+      </div>
+      
+     <!-- Register Button -->
+      <button type="submit" class="button">Register</button>
+
+      <p>or register with social platforms</p>
+
+      <!-- Social Media Login Icons -->
+      <div class="social-icons">
+        <a href="#"><i class="bx bxl-google">Google</i></a>
+        <a href="#"><i class="bx bxl-linkedin-square">Linkedin</i></a>
+        <a href="#"><i class="bx bxl-facebook-square">Facebook</i></a>
+        <a href="#"><i class="bx bxl-github"></i>Github</a>
+      </div>
     </form>
-    <button (click)="register()">Register</button>
-</section>
+  </div>
+</div>
