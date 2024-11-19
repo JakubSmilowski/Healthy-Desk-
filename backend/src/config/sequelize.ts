@@ -11,4 +11,8 @@ const sequelize = new Sequelize(
     database: process.env.DATABASE_NAME,
 });
 
+sequelize.sync({ force: false }).then(() => {
+    console.log('Database & tables created!');
+});
+
 export default sequelize;

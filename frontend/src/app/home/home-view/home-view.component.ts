@@ -120,6 +120,10 @@ export class HomeViewComponent implements OnInit {
       height: this.height,
       time: time,
       motivationLevel: this.motivationLevel
+
+      deskHeight: this.height,
+      time: time,
+      userid: 3
     };
 
     this.profiles.push(newProfile);

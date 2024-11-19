@@ -2,13 +2,13 @@
 
 # Compiled output
 /frontend/dist
+/backend/dist
 /tmp
 /out-tsc
 /bazel-out
+/dist
 
 # Node
-frontend/node_modules/
-frontend/.angular/
 /node_modules
 npm-debug.log
 yarn-error.log
@@ -50,6 +50,5 @@ Thumbs.db
 .env
 
 # Angular
-/frontend/.angular
 .angular
 

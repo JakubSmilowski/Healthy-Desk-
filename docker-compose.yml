@@ -14,9 +14,10 @@ services:
       - app-network
 
   backend:
+    image: healthy-desk-backend
     build:
-      context: ./backend
-      dockerfile: Dockerfile
+      context: .
+      dockerfile: backend/Dockerfile
     environment:
       PORT: ${PORT}
       DATABASE_HOST: database
@@ -32,8 +33,10 @@ services:
       - app-network
 
   frontend:
+    image: healthy-desk-frontend
     build:
-      context: ./frontend
+      context: .
+      dockerfile: frontend/Dockerfile
     depends_on:
       - backend
     ports:

@@ -28,8 +28,18 @@ class SimpleRESTServer(BaseHTTPRequestHandler):
     def _send_response(self, status_code, data):
         self.send_response(status_code)
         self.send_header("Content-Type", "application/json")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
         self.end_headers()
         self.wfile.write(json.dumps(data).encode("utf-8"))
+
+    def do_OPTIONS(self):
+        self.send_response(200)
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+        self.send_header("Access-Control-Allow-Headers", "Content-Type")
+        self.end_headers()
+
 
     def _is_valid_api_key(self, api_key):
         return api_key == API_KEY
@@ -115,4 +125,4 @@ def run(server_class=HTTPServer, handler_class=SimpleRESTServer, port=8000):
 
 
 if __name__ == "__main__":
-    run()
+    run(port=8000)
