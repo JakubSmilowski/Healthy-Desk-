@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-alert-popup-view',
-  templateUrl: './alert-popup-view.component.html',
-  styleUrl: './alert-popup-view.component.css'
+  selector: 'app-alert-popup',
+  templateUrl: './alert-popup.component.html',
+  styleUrl: './alert-popup.component.css'
 })
-export class AlertPopupViewComponent implements OnInit {
+export class AlertPopupComponent implements OnInit {
   showPopup = false;
 
   ngOnInit(): void {

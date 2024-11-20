@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AlertPopupViewComponent } from './alert-popup-view.component';
+import { AlertPopupComponent } from './alert-popup.component';
 
-describe('AlertPopupViewComponent', () => {
-  let component: AlertPopupViewComponent;
-  let fixture: ComponentFixture<AlertPopupViewComponent>;
+describe('AlertPopupComponent', () => {
+  let component: AlertPopupComponent;
+  let fixture: ComponentFixture<AlertPopupComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [AlertPopupViewComponent]
+      declarations: [AlertPopupComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(AlertPopupViewComponent);
+    fixture = TestBed.createComponent(AlertPopupComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
