@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import {FormGroup, FormControl} from '@angular/forms';
-import { LoginModule } from '../login.module';
+import { FormGroup, FormControl } from '@angular/forms';
 import { LoginServiceService } from '../login.service';
 @Component({
   selector: 'app-login-view',

@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { LoginViewComponent } from './login-view/login-view.component';
-import { userInfo } from '../models/User';
+import { User } from '../models/UserModel';
+
 @Injectable({
   providedIn: 'root'
 })
 export class LoginServiceService {
   defaultHeight!: number;
   
-  logedInUser: userInfo = {
-    id: 1,
+  logedInUser: User = {
+    userId: 1,
     username: 'DefaultUser',
     password: 'siema',
     email: 'siema@gmail.com'
@@ -22,10 +23,12 @@ export class LoginServiceService {
   SubmitLogin(username: string, password: string) {
     console.log('Form submitted:', username, password);
 
-    //Send user to api
+    // Send user to api
+    // Saves user
+    // this.LogInUser(User)
   }
 
-  LogedInUser(user: userInfo) {
+  LogInUser(user: User) {
     this.logedInUser = user;
   }
 

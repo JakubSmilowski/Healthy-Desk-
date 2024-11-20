@@ -30,14 +30,14 @@ export class HomeService {
 
     const newProfile: Profile = {
       title: 'Default Profile',
-      height: Math.round(this.userHeight * 0.61),
+      deskHeight: Math.round(this.userHeight * 0.61),
       time: time,
       motivationLevel: 'soft' //to be assigned from alers
     };
 
     const sittingProfile: Profile = {
       title: 'Sitting Profile',
-      height: Math.round(this.userHeight * 0.43),
+      deskHeight: Math.round(this.userHeight * 0.43),
       time: time,
       motivationLevel: 'soft' //to be assigned from alers
     };
