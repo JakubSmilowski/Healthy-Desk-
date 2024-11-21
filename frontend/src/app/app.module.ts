@@ -12,17 +12,13 @@ import { StreakPopupModule } from './streak-popup/streak-popup.module';
 import { RegisterComponent } from './register/register-view/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DeskConnectModule } from './desk-connect/desk-connect.module';
-import { AlertPopupComponent } from './alert-popup/alert-popup-view/alert-popup.component';
-
-
-
+import { AlertPopupModule } from './alert-popup/alert-popup.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginViewComponent,
-    RegisterComponent,
-    AlertPopupComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +29,8 @@ import { AlertPopupComponent } from './alert-popup/alert-popup-view/alert-popup.
     FormsModule,
     AccountPopupModule,
     StreakPopupModule,
-    DeskConnectModule
+    DeskConnectModule,
+    AlertPopupModule
   ],
   providers: [
     provideAnimationsAsync()

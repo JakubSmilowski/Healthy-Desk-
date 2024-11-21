@@ -8,6 +8,9 @@ import { Profile } from '../../models/profile.model';
   styleUrls: ['./home-view.component.css']
 })
 export class HomeViewComponent implements OnInit {
+
+  alertPopupVisible = false;
+
   constructor(private homeService: HomeService) {}
 
   curDeskHeight: number = 68;
@@ -25,6 +28,8 @@ export class HomeViewComponent implements OnInit {
     this.hours = this.homeService.hours;
     this.minutes = this.homeService.minutes;
     this.profiles = this.homeService.profiles;
+
+    this.alertPopupVisible = true;
   }
 
   createProfilePopUp() {
@@ -113,5 +118,9 @@ export class HomeViewComponent implements OnInit {
 
   removeProfile(index: number) {
     this.profiles.splice(index, 1);
+  }
+
+  toggleAlertPopup() {
+    this.alertPopupVisible = !this.alertPopupVisible;
   }
 }

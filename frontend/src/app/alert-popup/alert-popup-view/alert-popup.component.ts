@@ -22,14 +22,12 @@ export class AlertPopupComponent implements OnInit {
   onAccept(): void {
     this.showPopup = false;
     console.log("Accepted");
-
     this.startPopupTimer();
   }
 
   onDeny(): void {
     this.showPopup = false;
     console.log("Denied");
-
     this.startPopupTimer();
   }
 }

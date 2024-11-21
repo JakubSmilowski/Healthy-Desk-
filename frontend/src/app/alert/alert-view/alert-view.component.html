@@ -6,12 +6,15 @@
     <h2>Personalise your alert settings to fit your needs.</h2>
 
     <section class="alertBox">
-            <button
-                class="buttonsFirst"
-                id="AlertOnOff">Turn alerts on/off <!--state dependent-->
-            </button><br>
+        <mat-expansion-panel class="AlertSetupButton" id="col1">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Turn alerts on/off <!--state dependent-->
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+        </mat-expansion-panel>
 
-            <mat-expansion-panel class="toggles">
+            <mat-expansion-panel class="AlertSetupButton" id="col2">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         Motivation level
@@ -23,15 +26,15 @@
                 <button class="secondButtons">Extreme</button>
             </mat-expansion-panel>
 
-            <mat-expansion-panel class="toggles">
+            <mat-expansion-panel class="AlertSetupButton" id="col3">
                 <mat-expansion-panel-header>
                     <mat-panel-title>
                         Alert Intensity
                     </mat-panel-title>
                 </mat-expansion-panel-header>
 
-                <button class="secondButtons">Low</button>
-                <button class="secondButtons">Moderate</button>
+                <button class="secondButtons">Low</button><br>
+                <button class="secondButtons">Moderate</button><br>
                 <button class="secondButtons">Extreme</button>
             </mat-expansion-panel>
 

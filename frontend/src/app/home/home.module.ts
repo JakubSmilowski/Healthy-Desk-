@@ -4,7 +4,7 @@ import { HomeViewComponent } from './home-view/home-view.component';
 import { NavigationModule } from '../navigation/navigation.module';
 import { AccountPopupModule } from '../account-popup/account-popup.module';
 import { FormsModule } from '@angular/forms';
-import { SharedModule } from '../shared/shared.module';
+import { AlertPopupModule } from '../alert-popup/alert-popup.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +15,7 @@ import { SharedModule } from '../shared/shared.module';
     NavigationModule,
     FormsModule,
     AccountPopupModule,
-    SharedModule
+    AlertPopupModule
   ],
   exports: [
     HomeViewComponent
