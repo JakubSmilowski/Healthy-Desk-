@@ -4,7 +4,7 @@ body {
 
 .alertBox {
     display: grid;
-    background-color: rgb(237, 235, 235);
+    background-color: rgb(255, 0, 0);
     border: 1px solid rgb(85, 85, 85);
     margin: 10%;
     padding-top: 1%;
