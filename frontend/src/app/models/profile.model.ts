@@ -1,5 +1,7 @@
 export interface Profile {
+    userId: number;
+    profileId: string;
     title: string;
-    height: number;
+    deskHeight: number;
     time: string;
   }

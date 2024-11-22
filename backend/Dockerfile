@@ -1,25 +1,24 @@
 FROM node:18
 
 # Navigate to directory
-WORKDIR /backend
+WORKDIR /Healthy-Desk-
 
-# Install dependancies
+# Install dependencies
+RUN apt-get update && apt-get install -y python3 python3-pip
 RUN npm install dotenv
 RUN npm install -g typescript
 RUN npm install @types/dotenv --save-dev
 COPY package*.json ./
 RUN npm install
 
-# 4. Copy code
-COPY . .
+# Copy code
+COPY backend ./backend
 
-# 5. Compile
-RUN npm run build
+# Compile
+RUN npm run build:backend
 
-# wait for the database to be ready
+# Application port
+EXPOSE 8000
 
-# 6. Application port
-EXPOSE 3000
-
-# 7. Start the server
-CMD ["npm", "start"]
+# Start the server and the Python API service
+CMD ["sh", "-c", "npm run start:backend & python3 backend/src/config/desk-api.py"]

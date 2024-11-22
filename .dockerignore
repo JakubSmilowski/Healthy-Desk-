@@ -1,0 +1,10 @@
+# Dockerfiles
+/backend/Dockerfile
+/frontend/Dockerfile
+docker-compose.yml
+
+# IDE files
+.vscode
+
+# Node modules
+/node_modules

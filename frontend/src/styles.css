@@ -1,4 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+<<<<<<< HEAD
+=======
+@import '../node_modules/bootstrap/scss/bootstrap.scss';
+
+>>>>>>> upstream/front-end
 :root{
     --lightBlue:rgb(132, 198, 220);
     --darkBlue: #005c99;
