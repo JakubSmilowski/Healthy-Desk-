@@ -1,32 +1,12 @@
 import { Injectable } from '@angular/core';
-<<<<<<< HEAD
-import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
-
-export interface Desk {
-  id: string;
-  name: string;
-  manufacturer: string;
-  position: number;
-  speed: number;
-  status: string;
-}
-
-=======
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Desk } from '../models/DeskModel';
->>>>>>> upstream/front-end
 
 @Injectable({
   providedIn: 'root'
 })
 export class DeskApiService {
-<<<<<<< HEAD
-  private apiUrl = 'http://localhost:8000/api/v1/E9Y2LxT4g1hQZ7aD8nR3mWx5P0qK6pV7/desks'
-
-  constructor(private http: HttpClient) { }
-=======
 
   private conectedDeskId: string = '';
 
@@ -36,7 +16,6 @@ export class DeskApiService {
 
 
   constructor(private http: HttpClient) {}
->>>>>>> upstream/front-end
 
   getDesks(): Observable<string[]> {
     return this.http.get<string[]>(this.apiUrl)
@@ -46,9 +25,6 @@ export class DeskApiService {
     const deskUrl = `${this.apiUrl}/${deskId}`;
     return this.http.get<Desk>(deskUrl);
   }
-<<<<<<< HEAD
-}
-=======
 
   updateDeskPosition(position: number): Observable<any> {
     const conectedDeskUrl = `http://127.0.0.1:8000/api/v1/E9Y2LxT4g1hQZ7aD8nR3mWx5P0qK6pV7/desks/cd:fb:1a:53:fb:e6`;
@@ -93,4 +69,3 @@ export class DeskApiService {
 
 
 
->>>>>>> upstream/front-end

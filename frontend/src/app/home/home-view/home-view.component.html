@@ -10,7 +10,7 @@
                 (mouseleave)="clearInterval()"
                 (click)="increaseHeight()">▲</button>
         
-        <button class="arrow" id="decrease-height" 
+            <button class="arrow" id="decrease-height" 
                 (mousedown)="onHoldDecrease()" 
                 (mouseup)="clearInterval()"
                 (mouseleave)="clearInterval()"
@@ -19,45 +19,47 @@
         </section>
     </div>
     <div>
-    <button class="button" id="add-profile-button" (click)="createProfilePopUp()">Add Profile</button>
-    <section id="profiles-section">
-        <div *ngIf="isFormVisible" class="create-profile-popup">
-            <div id="create-profile">
-                <button (click)="createProfilePopUp()" class="delete-button" id="close-create">x</button>
-                <p id="title">Profile title:</p>
-                <input id="title-input" [(ngModel)]="profileTitle" type="text" placeholder="No Title" minlength="5" maxlength="15">
+        <button class="button" id="add-profile-button" (click)="createProfilePopUp()">Add Profile</button>
+        <section id="profiles-section">
+            <div *ngIf="isFormVisible" class="create-profile-popup">
+                <div id="create-profile">
+                    <button (click)="createProfilePopUp()" class="delete-button" id="close-create">x</button>
+                    <p id="title">Profile title:</p>
+                    <input id="title-input" [(ngModel)]="profileTitle" type="text" placeholder="No Title" minlength="5" maxlength="15">
 
-                <div id="set-height">
-                    <label for="height-slider">Table height: <span class="height-value">{{height}}cm</span></label>
-                    <input id="height-slider" [(ngModel)]="height" type="range" min="68" max="132" step="1" />
-                </div>
+                    <div id="set-height">
+                        <label for="height-slider">Table height: <span class="height-value">{{height}}cm</span></label>
+                        <input id="height-slider" [(ngModel)]="height" type="range" min="68" max="132" step="1" />
+                    </div>
                 
-                <p id="stand-every">Change desk height to <span class="height-value">{{height}}cm </span> every:</p>
-                <form id="timer-form">
-                    <div class="time">
-                        <label for="hours">Hours</label>
-                        <input id="hours" name="hours" type="number" min="0" max="23"
-                        [(ngModel)]="hours" (ngModelChange)="validateHours()"/>
-                    </div>
-                    <div class="time">
-                        <label for="minutes">Minutes</label>
-                        <input id="minutes" name="minutes" type="number" min="0" max="59" 
-                        [(ngModel)]="minutes" (ngModelChange)="validateMinutes()"/>
-                    </div>
-                </form>
-                <button class="button" id="save-profile-button" (click)="saveProfile()">Save</button>
-            </div>
-        </div>
-        <div id="user-profiles">
-            <div *ngFor="let profile of profiles; let i = index" class="profile">
-                <div id="title-and-button">
-                    <h6>{{ profile.title }}</h6>
-                    <button class="delete-button" (click)="removeProfile(i)">x</button>
+                    <p id="stand-every">Change desk height to <span class="height-value">{{height}}cm </span> every:</p>
+                    <form id="timer-form">
+                        <div class="time">
+                            <label for="hours">Hours</label>
+                            <input id="hours" name="hours" type="number" min="0" max="23"
+                            [(ngModel)]="hours" (ngModelChange)="validateHours()"/>
+                        </div>
+                        <div class="time">
+                            <label for="minutes">Minutes</label>
+                            <input id="minutes" name="minutes" type="number" min="0" max="59" 
+                            [(ngModel)]="minutes" (ngModelChange)="validateMinutes()"/>
+                        </div>
+                    </form>
+                    <button class="button" id="save-profile-button" (click)="saveProfile()">Save</button>
                 </div>
-                <p>Height: {{ profile.height }}cm</p>
-                <p>Time: {{ profile.time }}</p>
             </div>
-        </div>
-    </section>
+            <div id="user-profiles">
+                <div *ngFor="let profile of profiles; let i = index" class="profile">
+                    <div id="title-and-button">
+                        <h6>{{ profile.title }}</h6>
+                        <button class="delete-button" (click)="removeProfile(i)">x</button>
+                    </div>
+                    <p>Height: {{ profile.deskHeight }}cm</p>
+                    <p>Time: {{ profile.time }}</p>
+                    <p>Motivation level: {{ motivationLevel }}</p>
+                    <button class="button" (click)="editProfile(i)">Edit</button>
+                </div>
+            </div>
+        </section>
     </div>
 </body>
