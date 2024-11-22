@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+/*import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlertPopupComponent } from '../alert-popup/alert-popup-view/alert-popup.component';
 
@@ -12,4 +12,4 @@ import { AlertPopupComponent } from '../alert-popup/alert-popup-view/alert-popup
         AlertPopupComponent
     ]
 })
-export class SharedModule { }
+export class SharedModule { }*/
