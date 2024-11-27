@@ -6,7 +6,7 @@ import { AlertService } from '../alert.service';
   templateUrl: './alert-view.component.html',
   styleUrl: './alert-view.component.css'
 })
-export class AlertViewComponent {/*
+export class AlertViewComponent {
   constructor(private alertService: AlertService) { }
   
   sendAlert1() {
@@ -21,5 +21,5 @@ export class AlertViewComponent {/*
   sendAlert3() {
     const currentAlertSount = "high";
     this.alertService.sendAlert(currentAlertSount);
-  }*/
+  }
 }
