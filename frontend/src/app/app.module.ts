@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NavigationModule } from './navigation/navigation.module';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { LoginViewComponent } from './login/login-view/login-view.component';
 import { HomeModule } from './home/home.module';
 import { FormsModule } from '@angular/forms';
@@ -31,7 +32,12 @@ import { MatExpansionModule } from '@angular/material/expansion';
     DeskConnectModule,
     MatExpansionModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+
+  
+ }

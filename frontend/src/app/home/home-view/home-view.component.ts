@@ -45,10 +45,10 @@ export class HomeViewComponent implements OnInit {
   updateDeskHeight() {
     console.log('Desk height:', this.curDeskHeight); // Debugging line
     this.apiDeskService.updateDeskPosition(this.curDeskHeight).subscribe({
-      next: (response) => {
+      next: (response: any) => {
         console.log('Desk position updated successfully:', response);
       },
-      error: (error) => {
+      error: (error: any) => {
         console.error('Failed to update desk position:', error);
       }
     });

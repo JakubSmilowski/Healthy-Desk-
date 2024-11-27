@@ -30,5 +30,20 @@ export class HomeService {
     if((deskHeight > standingHeight - 10) && (deskHeight < standingHeight + 10))
       return true;
     else return false;
+
+    /*saveDefaultProfile() {
+    const time = `${this.hours}h ${this.minutes}m`;
+
+    const newProfile: Profile = {
+      title: 'Default Profile',
+      height: Math.round(this.userHeight * 0.61),
+      time: time
+    };
+
+    this.profiles.push(newProfile);
+
+    this.profiles.forEach(profile => {
+      console.log(profile)
+    }); */
   }
 }
