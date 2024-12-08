@@ -2,8 +2,6 @@
 
 .alertBox {
     display: grid;
-    background-color: rgb(237, 235, 235);
-    border: 1px solid rgb(85, 85, 85);
     margin: 10%;
     padding-top: 1%;
     padding-bottom: 1%;
@@ -29,16 +27,22 @@ h2 {
     padding: 1%;
     margin: 4%; 
     color: rgb(0, 0, 0);
-    background-color: rgb(212, 212, 212);
-    border: 2px solid black;
+    background-color: white;
+    border: 2px solid #cce7ff;
 }
 
 .secondButtons {
 
     color: rgb(0, 0, 0);
-    background-color: rgb(174, 174, 193);
+    background-color:  #cce7ff;
+    border: 1px solid rgb(65, 65, 65);
+    padding: 3px;
     border-radius: 10%;
     margin: 1%;
+}
+
+.secondButtons:hover {
+    background-color:  #7bc0fc;
 }
 
 #col1 {
