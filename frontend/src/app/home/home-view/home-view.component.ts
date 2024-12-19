@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { Subscription } from 'rxjs';
 import { HomeService } from '../home.service';
 import { Profile } from '../../models/ProfileModel';
 import { DeskApiService } from '../../services/desk-api.service';
 import { response } from 'express';
 import { LoginService } from '../../login/login.service';
+import { TimerService } from '../../services/timer.service';
 
 @Component({
   selector: 'app-home-view',
@@ -13,8 +15,10 @@ import { LoginService } from '../../login/login.service';
 export class HomeViewComponent implements OnInit {
   constructor(
     private homeService: HomeService,
-    private apiDeskService: DeskApiService,
-    private loginService: LoginService
+    public apiDeskService: DeskApiService,
+    private loginService: LoginService,
+    private timerService: TimerService,
+    private cdr: ChangeDetectorRef
   ) {
     this.getDeskPosition();
   }
@@ -32,10 +36,9 @@ export class HomeViewComponent implements OnInit {
   hoursStanding: number = 0;
   minutesStanding: number = 0;
   isStanding: boolean = false;
-  curProfile!: Profile;
-  sittingTimer: any;
-  standingTimer: any;
   editMode!: boolean;
+
+  curProfile!: Profile | undefined;
 
   private intervalId: any;
   private holdTime: number = 200;
@@ -43,7 +46,7 @@ export class HomeViewComponent implements OnInit {
   async ngOnInit() {
     // Loads the profiles stored in the db
     await this.homeService.getAllProfiles().subscribe({
-      next: (response: Profile[]) => {
+      next: () => {
         console.log('Profiles loaded successfully:', this.homeService.profiles);
         this.defaultProfiles = this.homeService.defaultProfiles;
         this.profiles = this.homeService.profiles;
@@ -51,6 +54,14 @@ export class HomeViewComponent implements OnInit {
       error: (error) => {
         console.error('Error loading profiles:', error);
       },
+    });
+
+    await this.homeService.getSelectedProfile().subscribe((profile) => {
+      if (profile) {
+        profile.selected = true;
+        console.log(profile);
+        this.cdr.detectChanges();
+      }
     });
 
     this.hours = this.homeService.hours;
@@ -63,7 +74,7 @@ export class HomeViewComponent implements OnInit {
   getDeskPosition() {
     this.apiDeskService.getDeskPosition().subscribe({
       next: (response) => {
-        this.curDeskHeight = response;
+        console.log('Desk position:', response);
       },
       error: (error) => {
         console.error('Failed to get desk position:', error);
@@ -73,20 +84,14 @@ export class HomeViewComponent implements OnInit {
 
   /* DESK HEIGHT CONTROL BUTTON */
 
-  async updateDeskHeight(newHeight: number) {
+  updateDeskHeight(newHeight: number) {
     //makes it so the desk height is not for example 68.00000000000001
     newHeight = parseFloat(newHeight.toFixed(1));
-    console.log('Desk height:', newHeight); // Debugging line
-
-    await this.apiDeskService.updateDeskPosition(newHeight).subscribe({
-      next: (response) => {
-        console.log('Desk position updated successfully:', response);
-      },
-      error: (error) => {
-        console.error('Failed to update desk position:', error);
-      },
-    });
-    this.curDeskHeight = newHeight;
+    try {
+      this.apiDeskService.updateDeskPosition(newHeight);
+    } catch (error) {
+      console.error('Error updating desk height:', error);
+    }
   }
 
   increaseHeight() {
@@ -178,7 +183,7 @@ export class HomeViewComponent implements OnInit {
   }
 
   saveButtonHandler() {
-    if(!this.editMode) {
+    if (!this.editMode) {
       this.saveProfile();
     }
   }
@@ -218,7 +223,6 @@ export class HomeViewComponent implements OnInit {
         timer_sitting: timerSitting,
         timer_standing: timerStanding,
       };
-      console.log('Creating profile...');
       this.homeService
         .createProfile(
           newProfile.userId,
@@ -230,7 +234,6 @@ export class HomeViewComponent implements OnInit {
         .subscribe({
           next: (response) => {
             newProfile.profileid = response.profileid;
-            console.log('Profile created successfully:', response);
           },
           error: (error) => {
             console.error('Error creating profile:', error);
@@ -321,10 +324,13 @@ export class HomeViewComponent implements OnInit {
     this.profileid = profile.profileid?.toString() || '';
     this.profileTitle = profile.title;
     this.height = profile.deskHeight;
-    const {hours, minutes } = this.homeService.calcHrsMins(profile.timer_sitting ?? '');
+    const { hours, minutes } = this.homeService.calcHrsMins(
+      profile.timer_sitting ?? ''
+    );
     this.hours = hours;
     this.minutes = minutes;
-    const {hours: hoursStanding, minutes: minuteStanding} = this.homeService.calcHrsMins(profile.timer_standing ?? '');    
+    const { hours: hoursStanding, minutes: minuteStanding } =
+      this.homeService.calcHrsMins(profile.timer_standing ?? '');
     this.hoursStanding = hoursStanding;
     this.minutesStanding = minuteStanding;
   }
@@ -355,97 +361,41 @@ export class HomeViewComponent implements OnInit {
     }
   }
 
-  getTimersString(): {timerStanding: string, timerSitting: string} {
+  getTimersString(): { timerStanding: string; timerSitting: string } {
     const timerSitting = `${this.hours}h ${this.minutes}m`;
     const timerStanding = `${this.hoursStanding}h ${this.minutesStanding}m`;
-    return {timerStanding, timerSitting};
+    return { timerStanding, timerSitting };
   }
-
 
   /* PROFILE SELECTION / TIMERS */
 
-  profileSelected(profile: Profile) {
-    console.log('Profile selected:', profile.title);
+  async profileSelected(profile: Profile) {
+    if (this.curProfile === profile) {
+      this.curProfile.selected = false;
+      this.curProfile = undefined;
+      await this.homeService.setProfile(undefined);
+      return;
+    }
     this.curProfile = profile;
-    //saved in local storage for now
-    localStorage.setItem('profile', JSON.stringify(this.curProfile));
 
+    await this.homeService.setProfile(this.curProfile);
     // Remove 'selected' class from all profiles
     this.defaultProfiles.forEach((p) => (p.selected = false));
     this.profiles.forEach((p) => (p.selected = false));
 
     // Add 'selected' class to the current profile
-    profile.selected = true;
+    this.curProfile.selected = true;
 
-    if (this.defaultProfiles.includes(profile)) {
+    if (this.defaultProfiles.includes(this.curProfile)) {
       // Move the desk to the position of the default profile
-      this.updateDeskHeight(profile.deskHeight);
-      console.log('Moved desk to default profile height:', profile.deskHeight);
+
+      this.updateDeskHeight(this.curProfile.deskHeight);
 
       // Stop any running timers
-      this.stopTimers();
+      this.timerService.stopTimers();
     } else {
       // Start the appropriate timer based on the current state
-      if (this.isStanding) {
-        this.startSittingTimer();
-      } else {
-        this.startStandingTimer();
-      }
-    }
-  }
-
-  stopTimers() {
-    // Clear any existing timers
-    if (this.sittingTimer) {
-      clearTimeout(this.sittingTimer);
-      this.sittingTimer = null;
-      console.log('Stopped sitting timer');
-    }
-    if (this.standingTimer) {
-      clearTimeout(this.standingTimer);
-      this.standingTimer = null;
-      console.log('Stopped standing timer');
-    }
-  }
-
-  startSittingTimer() {
-    try {
-      this.isStanding = false;
-      const { hours, minutes } = this.homeService.calcHrsMins(
-        this.curProfile.timer_sitting ?? ''
-      );
-      const timerSitting = (hours * 60 + minutes) * 60 * 1000;
-
-      console.log('Starting sitting timer:', timerSitting);
-      this.sittingTimer = setTimeout(() => {
-        const standingProfile = this.curProfile;
-        this.updateDeskHeight(standingProfile.deskHeight);
-        console.log('Updated desk height:', standingProfile.deskHeight);
-        this.profileSelected(this.curProfile);
-      }, timerSitting);
-    } catch (error) {
-      alert('Error starting sitting timer');
-      console.error('Error starting sitting timer:', error);
-    }
-  }
-
-  startStandingTimer() {
-    try {
-      this.isStanding = true;
-      const { hours, minutes } = this.homeService.calcHrsMins(
-        this.curProfile.timer_standing ?? ''
-      );
-      const timerStanding = (hours * 60 + minutes) * 60 * 1000;
-      console.log('Starting standing timer:', timerStanding);
-      // calls the updateDeskHeight function after timer is over
-      this.standingTimer = setTimeout(() => {
-        const sittingProfile = this.defaultProfiles[0];
-        this.updateDeskHeight(sittingProfile.deskHeight);
-        this.profileSelected(this.curProfile);
-      }, timerStanding);
-    } catch (error) {
-      alert('Error starting standing timer');
-      console.error('Error starting standing timer:', error);
+      this.timerService.timersHandler();
     }
   }
 }

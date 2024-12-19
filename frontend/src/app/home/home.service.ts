@@ -1,13 +1,9 @@
-import { Injectable, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Injectable, OnInit } from '@angular/core';
 import { Profile } from '../models/ProfileModel';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, tap } from 'rxjs/operators';
-import { Observable, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { catchError, map, tap } from 'rxjs/operators';
+import { Observable, of, throwError } from 'rxjs';
 import { LoginService } from '../login/login.service';
-import { Day } from '../models/DayModel';
-import { AnalyticsService } from '../analytics/analytics.service';
-import { DeskApiService } from '../services/desk-api.service';
-import { time } from 'highcharts';
 
 @Injectable({
   providedIn: 'root',
@@ -26,13 +22,9 @@ export class HomeService implements OnInit {
 
   apiUrl = 'http://localhost:3000/api';
 
-  constructor(
-    private http: HttpClient,
-    private loginService: LoginService
-  ) {}
+  constructor(private http: HttpClient, private loginService: LoginService) {}
 
   ngOnInit(): void {
-      this.getAllProfiles();
   }
 
   validateHours(hours: number) {
@@ -61,14 +53,17 @@ export class HomeService implements OnInit {
       timer_sitting,
       timer_standing,
     };
-    console.log('Received request..', JSON.stringify(profileData));
-    return this.http.post(`${this.apiUrl}/${userid}/profiles`, profileData).pipe(
-      tap((response) => console.log('Profile created successfully:', response)),
-      catchError((error) => {
-        console.error('Error creating profile:', error);
-        return error;
-      })
-    );
+    return this.http
+      .post(`${this.apiUrl}/${userid}/profiles`, profileData)
+      .pipe(
+        tap((response) =>
+          console.log('Profile created successfully:', response)
+        ),
+        catchError((error) => {
+          console.error('Error creating profile:', error);
+          return error;
+        })
+      );
   }
 
   updateProfile(
@@ -87,7 +82,6 @@ export class HomeService implements OnInit {
       timer_standing,
     };
     const url = `${this.apiUrl}/${userid}/profiles/${profileid}`;
-    console.log('Received request to update profile with ID:', profileid);
     return this.http.put(url, profileData).pipe(
       tap((response) => console.log('Profile updated successfully:', response)),
       catchError((error) => {
@@ -101,7 +95,7 @@ export class HomeService implements OnInit {
     const userid = this.loginService.getUserId();
     if (userid) {
       const url = `${this.apiUrl}/${userid}/profiles/${profileid}`;
-  
+
       return this.http.delete(url).pipe(
         tap(() =>
           console.log(`Profile with ID ${profileid} deleted successfully.`)
@@ -110,9 +104,8 @@ export class HomeService implements OnInit {
           console.error('Error deleting profile:', error);
           return error;
         })
-      ); 
-    }
-    else {
+      );
+    } else {
       return throwError('User not logged in');
     }
   }
@@ -137,6 +130,56 @@ export class HomeService implements OnInit {
         return throwError(error);
       })
     );
+  }
+
+  async setProfile(profile: Profile | undefined): Promise<any> {
+    const userid = this.loginService.getUserId();
+    let profileid: number | undefined;
+    if (!userid) {
+      return throwError('User not logged in');
+    }
+    profileid = profile?.profileid;
+    if (userid) {
+      console.log('Setting profile:', profileid);
+      await this.http
+        .put<Profile>(`${this.apiUrl}/profiles/${userid}/curProfile`, {
+          profileid,
+        }).subscribe({
+          next: (response) => {
+            console.log('Profile set successfully:', response);
+          },
+          error: (error) => {
+            console.error('Error setting profile:', error);
+            return throwError(error);
+          },
+        });
+    }
+  }
+
+  getSelectedProfile(): Observable<Profile | null> {
+    const userid = this.loginService.getUserId();
+    if (userid) {
+      return this.http.get<{ curProfile: number }>(`${this.apiUrl}/profiles/${userid}/curProfile`).pipe(
+        map(response => {
+          console.log( 'Response:', response);
+          const res = response.curProfile;
+          if (res) {
+            for (const profile of [...this.defaultProfiles, ...this.profiles]) {
+              if (res === profile.profileid) {
+                return profile;
+              }
+            }
+          }
+          return null;
+        }),
+        catchError(error => {
+          console.error('Error fetching current profile:', error);
+          return of(null);
+        })
+      );
+      } else {
+        return of(null);
+    }
   }
 
   isDefaultProfile(profile: Profile) {

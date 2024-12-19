@@ -12,6 +12,10 @@ import { RegisterComponent } from './register/register-view/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DeskConnectModule } from './desk-connect/desk-connect.module';
 import { ManagerModule } from '../manager/manager.module';
+import { TimerService } from './services/timer.service';
+import { ScoreModule } from './score/score.module';
+import { AlertModule } from './alert/alert.module';
+import { AnalyticsModule } from './analytics/analytics.module';
 
 
 @NgModule({
@@ -30,9 +34,12 @@ import { ManagerModule } from '../manager/manager.module';
     AccountPopupModule,
     StreakPopupModule,
     DeskConnectModule,
-    ManagerModule
+    ManagerModule,
+    ScoreModule,
+    AlertModule,
+    AnalyticsModule,
   ],
-  providers: [],
+  providers: [TimerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

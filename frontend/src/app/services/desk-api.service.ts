@@ -1,6 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { catchError, distinct, distinctUntilChanged, interval, map, Observable, switchMap, tap } from 'rxjs';
+import { map, Observable, Subject } from 'rxjs';
 import { Desk } from '../models/DeskModel';
 import { LoginService } from '../login/login.service';
 import { AnalyticsService } from '../analytics/analytics.service';
@@ -15,7 +15,10 @@ export class DeskApiService {
   private whenUserStood!: number;
   private whenUserSat!: number;
   private curDeskPosition!: number;
-  private targetPosition!: number | null;
+  private positionSubject = new Subject<number>();
+  position$ = this.positionSubject.asObservable();
+
+  private readonly speed_mms: number = 32;
 
   private apiUrl =
     'http://127.0.0.1:8000/api/v2/E9Y2LxT4g1hQZ7aD8nR3mWx5P0qK6pV7/desks';
@@ -26,21 +29,24 @@ export class DeskApiService {
     private http: HttpClient,
     private loginService: LoginService,
     private analyticsService: AnalyticsService
-  ) { 
+  ) {
     this.init();
   }
 
   private init() {
-    this.getDeskPosition().subscribe((position) => {
-      this.curDeskPosition = position;
-      console.log('Current desk position:', this.curDeskPosition);  
-      const sittingHeight = this.loginService.getUserHeight() * 0.43;
-      const standingHeight = this.loginService.getUserHeight() * 0.61;     
-      this.userIsStanding = this.checkPosition(this.curDeskPosition, standingHeight);
-      this.userIsSitting = this.checkPosition(this.curDeskPosition, sittingHeight);
-      console.log('User is standing:', this.userIsStanding);
-      console.log('User is sitting:', this.userIsSitting);
-    });
+    console.log('Current desk position:', this.position$);
+    const sittingHeight = this.loginService.getUserHeight() * 0.43;
+    const standingHeight = this.loginService.getUserHeight() * 0.61;
+    this.userIsStanding = this.checkPosition(
+      this.curDeskPosition,
+      standingHeight
+    );
+    this.userIsSitting = this.checkPosition(
+      this.curDeskPosition,
+      sittingHeight
+    );
+    console.log('User is standing:', this.userIsStanding);
+    console.log('User is sitting:', this.userIsSitting);
   }
 
   getDesks(): Observable<string[]> {
@@ -54,46 +60,62 @@ export class DeskApiService {
 
   getDeskPosition(): Observable<number> {
     const id = this.getConnectedDeskId();
-    return interval(1000).pipe(
-      switchMap(() =>
-      this.http
+    return this.http
       .get<{ position_mm: number }>(`${this.apiUrl}/${id}/state`, {
         headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      })),
+      })
+      .pipe(
         map((response) => {
-          return response.position_mm / 10;
-        }),
-        distinctUntilChanged(),
-        catchError((error) => {
-          console.error('Error getting desk position', error);
-          throw error;
+          const position = response.position_mm / 10;
+          this.positionSubject.next(position);
+          return position;
         })
       );
   }
 
-  updateDeskPosition(position: number): Observable<any> {
+  // DONT TOUCH THIS METHOD PLS. I know it looks confusing, but it works at the same time as the api.
+  updateDeskPosition(newHeight: number) {
     const id = this.getConnectedDeskId();
-    this.targetPosition = position;
-    const position_mm = position * 10;
+    const position_mm = parseFloat(newHeight.toFixed(0)) * 10;
     const data = { position_mm: position_mm };
-    console.log('Updating desk position', data);
-    return this.http
-      .put<Desk>(`${this.apiUrl}/${id}/state`, data, {
-        headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-      })
-      .pipe(
-        map((response: Desk) => {
-          console.log('Desk position updated response:', response);
-          this.targetPosition = null;
-          //checks if user is in movement
-          this.updateAnalytics();
-          return response;
-        }),
-        catchError((error) => {
-          console.log('Error updating desk position', error);
-          throw error;
-        })
-      );
+    return this.getDeskPosition().subscribe({
+      next: (curPosition) => {
+        const distance = Math.abs(curPosition - newHeight);
+        const delay = (distance / this.speed_mms) * 1200;
+        this.http
+          .put<Desk>(`${this.apiUrl}/${id}/state`, data, {
+            headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+          })
+          .subscribe({
+            next: () => {
+              const updatePosition = () => {
+                if (curPosition < newHeight) {
+                  curPosition += Math.min(this.speed_mms / 10, newHeight - curPosition);
+                  curPosition = Math.min(curPosition, newHeight);
+                  this.positionSubject.next(parseFloat(curPosition.toFixed(1)));
+                  if (curPosition < newHeight) {
+                    setTimeout(updatePosition, delay);
+                  }
+                } else if (curPosition > newHeight) {
+                  curPosition -= Math.min(
+                    this.speed_mms / 10,
+                    curPosition - newHeight
+                  );
+                  curPosition = Math.max(curPosition, newHeight);
+                  this.positionSubject.next(parseFloat(curPosition.toFixed(2)));
+                  if (curPosition > newHeight) {
+                    setTimeout(updatePosition, delay);
+                  }
+                }
+              };
+              updatePosition();
+            },
+          });
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
 
   updateDeskID(deskId: string) {}
@@ -139,9 +161,9 @@ export class DeskApiService {
       console.error('Error getting user posture:', error);
     }
   }
-  
+
   ifUserSat(deskPosition: number, sittingHeight: number): boolean {
-    // if the user was already standing 
+    // if the user was already standing
     // double values dont get added
     if (
       this.userIsStanding &&
@@ -150,7 +172,7 @@ export class DeskApiService {
       return true;
     } else return false;
   }
-  
+
   ifUserStood(deskPosition: number, standingHeight: number): boolean {
     if (
       this.userIsSitting &&
@@ -184,9 +206,9 @@ export class DeskApiService {
       this.whenUserStood = 0;
       return;
     }
-    
+
     // user stood up
-    if(timeDifference < 0) {
+    if (timeDifference < 0) {
       this.analyticsService.updateDay(0);
       this.whenUserSat = 0;
       return;

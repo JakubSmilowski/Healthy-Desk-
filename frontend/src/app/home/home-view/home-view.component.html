@@ -1,7 +1,7 @@
 <body>
     <div id="arrows-container">
         <section id="arrows">
-            <div id="current-height">{{ curDeskHeight }} cm</div>
+            <div id="current-height">{{ apiDeskService.position$ | async }} cm</div>
             <div id="adjust-arrows">
                 <button class="arrow" id="increase-height" 
                 (mousedown)="onHoldIncrease()" 
@@ -63,7 +63,8 @@
         <div class="profiles-container">
             <h5 class="profile-type-text">Default profiles</h5>
             <div class="user-profiles">
-                <div *ngFor="let profile of defaultProfiles; let i = index" class="profile" [class.selected]="profile.selected" (click)="profileSelected(profile)">
+                <div *ngFor="let profile of defaultProfiles; let i = index" class="profile" 
+                [class.selected]="profile.selected" (click)="profileSelected(profile)">
                     <div class="title-and-button">
                         <h6>{{ profile.title }}</h6>
                         <button class="delete-button" (click)="removeProfile(i, defaultProfiles); $event.stopPropagation()">x</button>

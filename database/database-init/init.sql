@@ -9,7 +9,8 @@ CREATE TABLE "User" (
     times_moved INT,
     avg_times_moved INT,
     alert_streak INT,
-    longest_streak INT
+    longest_streak INT,
+    cur_profile INT
     );
 
 CREATE TABLE Profile (

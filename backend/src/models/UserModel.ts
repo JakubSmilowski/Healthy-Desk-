@@ -20,6 +20,7 @@ class User extends Model implements IUser {
     public times_moved!: number;
     public alert_streak!: number;
     public longest_streak!: number;
+    public cur_profile!: number;
 
     public generateToken(): string {
         console.log("Generating token for user:", this.email);
@@ -74,7 +75,11 @@ User.init(
         },
         longest_streak: {
             type: DataTypes.INTEGER,
-            defaultValue: 0
+            defaultValue: 0,
+        },
+        cur_profile: { 
+            type: DataTypes.INTEGER,
+            allowNull: true,
         }
     },
     {
