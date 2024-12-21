@@ -73,50 +73,69 @@ export class DeskApiService {
       );
   }
 
-  // DONT TOUCH THIS METHOD PLS. I know it looks confusing, but it works at the same time as the api.
   updateDeskPosition(newHeight: number) {
     const id = this.getConnectedDeskId();
-    const position_mm = parseFloat(newHeight.toFixed(0)) * 10;
+    const position_mm = this.convertHeightToMM(newHeight);
     const data = { position_mm: position_mm };
+
     return this.getDeskPosition().subscribe({
       next: (curPosition) => {
-        const distance = Math.abs(curPosition - newHeight);
-        const delay = (distance / this.speed_mms) * 1200;
-        this.http
-          .put<Desk>(`${this.apiUrl}/${id}/state`, data, {
-            headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
-          })
-          .subscribe({
-            next: () => {
-              const updatePosition = () => {
-                if (curPosition < newHeight) {
-                  curPosition += Math.min(this.speed_mms / 10, newHeight - curPosition);
-                  curPosition = Math.min(curPosition, newHeight);
-                  this.positionSubject.next(parseFloat(curPosition.toFixed(1)));
-                  if (curPosition < newHeight) {
-                    setTimeout(updatePosition, delay);
-                  }
-                } else if (curPosition > newHeight) {
-                  curPosition -= Math.min(
-                    this.speed_mms / 10,
-                    curPosition - newHeight
-                  );
-                  curPosition = Math.max(curPosition, newHeight);
-                  this.positionSubject.next(parseFloat(curPosition.toFixed(2)));
-                  if (curPosition > newHeight) {
-                    setTimeout(updatePosition, delay);
-                  }
-                }
-              };
-              updatePosition();
-            },
-          });
-      },
-      error: (error) => {
-        console.log(error);
+        const distance = this.calculateDistance(curPosition, newHeight);
+        const delay = this.calculateDelay(distance);
+
+        this.updateDeskState(id, data).subscribe({
+          next: () => {
+            this.animateDeskPosition(curPosition, newHeight, delay);
+          },
+        });
       },
     });
   }
+
+  private convertHeightToMM(height: number): number {
+    return parseFloat(height.toFixed(0)) * 10;
+  }
+
+  private calculateDistance(current: number, target: number): number {
+    return Math.abs(current - target);
+  }
+
+  private calculateDelay(distance: number): number {
+    return (distance / this.speed_mms) * 1200;
+  }
+
+  private updateDeskState(id: string, data: any) {
+    return this.http.put<Desk>(`${this.apiUrl}/${id}/state`, data, {
+      headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
+    });
+  }
+
+  private animateDeskPosition(
+    curPosition: number,
+    newHeight: number,
+    delay: number
+  ) {
+    const updatePosition = () => {
+      if (curPosition < newHeight) {
+        curPosition += Math.min(this.speed_mms / 10, newHeight - curPosition);
+        curPosition = Math.min(curPosition, newHeight);
+        this.positionSubject.next(parseFloat(curPosition.toFixed(1)));
+        if (curPosition < newHeight) {
+          setTimeout(updatePosition, delay);
+        }
+      } else if (curPosition > newHeight) {
+        curPosition -= Math.min(this.speed_mms / 10, curPosition - newHeight);
+        curPosition = Math.max(curPosition, newHeight);
+        this.positionSubject.next(parseFloat(curPosition.toFixed(1)));
+        if (curPosition > newHeight) {
+          setTimeout(updatePosition, delay);
+        }
+      }
+    };
+    updatePosition();
+  }
+
+  // ...existing code...
 
   updateDeskID(deskId: string) {}
 

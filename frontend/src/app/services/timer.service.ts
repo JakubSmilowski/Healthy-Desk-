@@ -58,6 +58,7 @@ export class TimerService {
   }
 
   async timersHandler() {
+    this.isWorkerActive = true;
     const profile = await this.getSelectedProfile();
     if (!profile) {
       console.error('Error: Profile not loaded');
@@ -79,18 +80,19 @@ export class TimerService {
     }
   }
 
+  stopTimers() {
+    this.stopSittingTimer();
+    this.stopStandingTimer();
+  }
+
   stopSittingTimer() {
+    this.isWorkerActive = false;
     // Clear any existing timers
     this.worker.postMessage({ action: 'stopSitting' });
   }
 
   stopStandingTimer() {
     this.worker.postMessage({ action: 'stopStanding' });
-  }
-
-  stopTimers() {
-    this.stopSittingTimer();
-    this.stopStandingTimer();
   }
 
   async startSittingTimer() {
@@ -101,7 +103,7 @@ export class TimerService {
         this.curProfile.timer_sitting ?? ''
       );
       const timerSitting = (hours * 60 + minutes) * 60 * 1000;
-      if(timerSitting === 0) {
+      if(timerSitting <= 0) {
         alert('Please try again');
         throw new Error;
       }
