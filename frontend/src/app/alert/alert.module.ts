@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AlertViewComponent } from './alert-view/alert-view.component';
 import { NavigationModule } from '../navigation/navigation.module';
-
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -10,7 +10,8 @@ import { NavigationModule } from '../navigation/navigation.module';
   ],
   imports: [
     CommonModule,
-    NavigationModule
+    NavigationModule,
+    MatExpansionModule
   ]
 })
 export class AlertModule { }

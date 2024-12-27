@@ -1,13 +1,18 @@
-body {
-    background-color: rgba(0,0,255, 0.3);
+.alertBox {
+    display: grid;
+    margin: 10%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    border-radius: 5px;
 }
 
 h1, h2 {
     text-align: center;
-    color: black;
+    color: rgb(0, 0, 0);
 }
 
 h1 {
+    padding-top: 3%;
     font-size: 55px;
 }
 
@@ -15,22 +20,37 @@ h2 {
     font-size: 20px;
 }
 
-.popover-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 10px;
+.AlertSetupButton {
+    border-radius: 5%;
+    padding: 1%;
+    margin: 4%; 
+    color: rgb(0, 0, 0);
+    background-color: white;
+    border: 2px solid #cce7ff;
 }
 
-.button1, .button2, .button3 {
-    padding: 10px 20px;
-    border-radius: 5px;
+.secondButtons {
+
+    color: rgb(0, 0, 0);
+    background-color:  #cce7ff;
+    border: 1px solid rgb(65, 65, 65);
+    padding: 3px;
+    border-radius: 10%;
+    margin: 1%;
 }
 
-p {
-    color: rgb(40, 80, 130);
-    padding: 5px 10px;
-    border-radius: 5px;
-    width: max-content;
-    white-space: nowrap;
+.secondButtons:hover {
+    background-color:  #7bc0fc;
+}
+
+#col1 {
+    grid-column: 1 / 2;
+}
+
+#col2 {
+    grid-column: 2 / 3;
+}
+
+#col3 {
+    grid-column: 3 / 4;
 }
