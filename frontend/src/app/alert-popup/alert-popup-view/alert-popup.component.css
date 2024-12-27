@@ -1,0 +1,58 @@
+body {
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+}
+
+#popup-container {
+    background-color: white;
+    border: 3px solid #cce7ff;
+    padding: 5px;
+    text-align: center;
+    border-radius: 5%;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+h1 {
+    border-bottom: solid #cce7ff;
+    font-size: large;
+}
+
+h2 {
+    font-size: medium;
+}
+
+h1, h2, h3 {
+    align-items: center;
+}
+
+p {
+    padding-bottom: 10px;
+}
+
+
+#AcceptAlert, #DenyAlert {
+    padding: 5px;
+    border: 2px  solid black;
+    border-radius: 12%;
+    margin: 1%;
+}
+
+#AcceptAlert {
+    background-color: rgb(1, 201, 61);
+}
+
+#AcceptAlert:hover {
+    background-color: rgb(63, 205, 106);
+}
+
+#DenyAlert {
+    background-color: rgb(255, 0, 0);
+}
+
+#DenyAlert:hover {
+    background-color: rgb(252, 52, 52);
+}

@@ -42,8 +42,10 @@ export class HomeViewComponent implements OnInit {
 
   private intervalId: any;
   private holdTime: number = 200;
+  alertPopupVisible = false;
 
   async ngOnInit() {
+    this.alertPopupVisible = true;
     // Loads the profiles stored in the db
     await this.homeService.getAllProfiles().subscribe({
       next: () => {
@@ -397,5 +399,8 @@ export class HomeViewComponent implements OnInit {
       // Start the appropriate timer based on the current state
       this.timerService.timersHandler();
     }
+  }
+  toggleAlertPopup() {
+    this.alertPopupVisible = !this.alertPopupVisible;
   }
 }
