@@ -27,6 +27,7 @@
     "@angular/router": "^18.2.12",
     "@types/highcharts": "^5.0.44",
     "@types/pg": "^8.11.10",
+    "angular": "^1.8.3",
     "angular-highcharts": "^17.0.1",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
@@ -49,6 +50,6 @@
     "@types/jsonwebtoken": "^9.0.7",
     "@types/sequelize": "^4.28.20",
     "rimraf": "^6.0.1",
-    "typescript": "5.4"
+    "typescript": "^5.4.0"
   }
 }

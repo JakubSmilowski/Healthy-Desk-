@@ -1,44 +1,44 @@
 <head>
-    <link rel="stylesheet" href="alert-view.component.css">
-    </head>
-    <body>
-        <h1>Alert setup</h1>
-        <h2>Personalise your alert settings to fit your needs.</h2>
-    
-        <section class="alertBox">
-            <mat-expansion-panel class="AlertSetupButton" id="col1">
+<link rel="stylesheet" href="alert-view.component.css">
+</head>
+<body>
+    <h1>Alert setup</h1>
+    <h2>Personalise your alert settings to fit your needs.</h2>
+
+    <section class="alertBox">
+        <mat-expansion-panel class="AlertSetupButton" id="col1">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="ButtonTitle">
+                    Turn alerts on/off <!--state dependent-->
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <button class="secondButtons">On</button><br>
+                <button class="secondButtons">Off</button><br>
+        </mat-expansion-panel>
+
+            <mat-expansion-panel class="AlertSetupButton" id="col2">
                 <mat-expansion-panel-header>
                     <mat-panel-title class="ButtonTitle">
-                        Turn alerts on/off <!--state dependent-->
+                        Motivation level
                     </mat-panel-title>
                 </mat-expansion-panel-header>
-                <button class="secondButtons">On</button><br>
-                    <button class="secondButtons">Off</button><br>
+
+                <button class="secondButtons" (click)="sendAlert1()">Low</button><br>
+                <button class="secondButtons" (click)="sendAlert2()">Moderate</button><br>
+                <button class="secondButtons" (click)="sendAlert3()">Extreme</button>
             </mat-expansion-panel>
-    
-                <mat-expansion-panel class="AlertSetupButton" id="col2">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title class="ButtonTitle">
-                            Motivation level
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-    
-                    <button class="secondButtons" (click)="sendAlert1()">Low</button><br>
-                    <button class="secondButtons" (click)="sendAlert2()">Moderate</button><br>
-                    <button class="secondButtons" (click)="sendAlert3()">Extreme</button>
-                </mat-expansion-panel>
-    
-                <mat-expansion-panel class="AlertSetupButton" id="col3">
-                    <mat-expansion-panel-header>
-                        <mat-panel-title class="ButtonTitle">
-                            Alert Intensity
-                        </mat-panel-title>
-                    </mat-expansion-panel-header>
-    
-                    <button class="secondButtons">Low</button><br>
-                    <button class="secondButtons">Moderate</button><br>
-                    <button class="secondButtons">Extreme</button>
-                </mat-expansion-panel>
-    
-        </section>
-    </body>
+
+            <mat-expansion-panel class="AlertSetupButton" id="col3">
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="ButtonTitle">
+                        Alert Intensity
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <button class="secondButtons">Low</button><br>
+                <button class="secondButtons">Moderate</button><br>
+                <button class="secondButtons">Extreme</button>
+            </mat-expansion-panel>
+
+    </section>
+</body>

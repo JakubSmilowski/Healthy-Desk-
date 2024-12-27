@@ -403,4 +403,8 @@ export class HomeViewComponent implements OnInit {
   toggleAlertPopup() {
     this.alertPopupVisible = !this.alertPopupVisible;
   }
+
+  toggleAlertPopup() {
+    this.alertPopupVisible = !this.alertPopupVisible;
+  }
 }

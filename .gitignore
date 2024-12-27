@@ -9,6 +9,8 @@
 /dist
 
 # Node
+frontend/node_modules/
+frontend/.angular/
 /node_modules
 npm-debug.log
 yarn-error.log

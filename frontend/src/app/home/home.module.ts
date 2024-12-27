@@ -18,6 +18,9 @@ import { AlertPopupModule } from '../alert-popup/alert-popup.module';
     AccountPopupModule,
     HttpClientModule,
     AlertPopupModule
-  ]
+  ],
+  //exports: [
+    //HomeViewComponent
+  //]
 })
 export class HomeModule { }
