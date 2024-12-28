@@ -400,9 +400,6 @@ export class HomeViewComponent implements OnInit {
       this.timerService.timersHandler();
     }
   }
-  toggleAlertPopup() {
-    this.alertPopupVisible = !this.alertPopupVisible;
-  }
 
   toggleAlertPopup() {
     this.alertPopupVisible = !this.alertPopupVisible;

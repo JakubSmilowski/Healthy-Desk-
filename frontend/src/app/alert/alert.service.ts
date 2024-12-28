@@ -12,7 +12,7 @@ export class AlertService {
   
   // motivationLevel: string = 'low';
 
-  calcTimers(mot_lvl: string): {standingUpTime: number, sittingTime: number} {
+ calcTimers(mot_lvl: string): {standingUpTime: number, sittingTime: number} {
     let standingUpTime: number = 0;
     let sittingTime: number = 0;
     
@@ -28,12 +28,12 @@ export class AlertService {
     }
     return {standingUpTime, sittingTime};
   }
-
+/*
   sendAlert(param: string) {
     console.log('Playing sound...');
     const url = `${this.apiUrl}${param}?`;
     this.http.get(url)
       .subscribe();
-  }
+  }*/
 
 }

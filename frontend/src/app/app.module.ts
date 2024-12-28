@@ -41,7 +41,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     AnalyticsModule,
     MatExpansionModule
   ],
-  providers: [TimerService//,
+  providers: [TimerService, provideAnimationsAsync()//,
    // provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
