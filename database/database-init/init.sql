@@ -216,4 +216,3 @@ INSERT INTO "Day" (userid, "date", standing_hrs, times_moved) VALUES
     (5, '2024-10-12', 3, 6),
     (5, '2024-10-13', 1, 2),
     (5, '2024-10-14', 4, 7);
-

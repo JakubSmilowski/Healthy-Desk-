@@ -71,6 +71,7 @@
 
 .change-password-button {
     color: blue;
+    cursor: pointer;
 }
 
 .close-popup-button {

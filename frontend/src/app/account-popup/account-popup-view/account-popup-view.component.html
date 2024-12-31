@@ -21,9 +21,16 @@
           <b>Password</b>
           <div class="password-container">
               <p>*****</p>
-              <p class="change-password-button">(change)</p>
+              <p class="change-password-button" (click)="changePasswordClicked()">(change)</p>
           </div>
         </div>
+        <form (ngSubmit)="onSubmitPassword()" *ngIf="isChangePasswordActive">
+          <div class="description-group">
+            <label for="password">Enter your new password:</label><br>
+            <input type="password" id="password" [(ngModel)]="newPassword" name="password" required/>
+            <button type="submit">Update</button>
+          </div>
+        </form>
       </div>
       <div class="button-container">
         <div class="button" id="desk-button" (click)="gotoConnect(); onClose()">

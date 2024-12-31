@@ -19,6 +19,7 @@ export class AccountPopupViewComponent implements OnInit {
   username: string = '';
   email: string = '';
   isManager: boolean = false;
+  isChangePasswordActive: boolean = false;
 
   gotoConnect() {
     this.router.navigate(['/connect']);
@@ -34,6 +35,26 @@ export class AccountPopupViewComponent implements OnInit {
 
   logOut() {
     this.loginService.logOut();
+  }
+
+  changePasswordClicked() {
+    this.isChangePasswordActive = true;
+  }
+
+  newPassword: string = ''
+  onSubmitPassword() {
+    if(this.newPassword!=='') {
+    this.loginService.changePassword(this.newPassword).subscribe(
+      (response)  =>  {
+        console.log(response);
+        this.newPassword = '';
+        alert("Password updated succesfully.");
+        this.isChangePasswordActive = false;
+      })
+    } 
+    else {
+      alert("Password can't be empty!")
+    }
   }
 
   @Output() close = new EventEmitter<void>();

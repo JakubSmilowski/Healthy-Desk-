@@ -1,0 +1,63 @@
+.nav-bar {
+    position: sticky;
+}
+
+.nav-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 60vw;
+    white-space: nowrap;
+}
+
+.header-title {
+    position: static;
+    left:30px;
+    font-size: 40px;
+    cursor: pointer;
+    color: var(--lightBlue);
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.13);
+    margin: 0;
+  
+}
+
+.logout-section {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    right: 30px;
+    box-sizing: border-box;
+}
+
+.logout-button {
+    color: red;
+    background-color: white;
+    border: solid rgb(130, 3, 3) 1px;
+    padding: 10px;
+    flex: 1;
+    text-align: center;
+    position: static;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    font-weight: 500;
+    border-radius: 45px;
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+    outline: none;
+}
+
+.logout-button:hover {
+    background-color: rgb(143, 11, 11);
+    box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.4);
+    color: #ffffff;
+    transform: translateY(-5px);
+}
+
+.container {
+    height: 70vh;
+}

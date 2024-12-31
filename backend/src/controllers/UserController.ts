@@ -82,6 +82,17 @@ class UserController {
       res.send(error);
     }
   }
+
+  async updatePassword (req: Request, res: Response) {
+    try {
+      const { userId, password } = req.body;
+      const token = await UserService.updatePassword(userId, password);
+      res.status(200).json({ token });
+    } catch (error) {
+      console.error("Error setting current profile:", error);
+      res.send(error);
+    }
+  }
 }
 
 export default UserController;

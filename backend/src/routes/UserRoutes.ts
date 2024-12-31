@@ -48,4 +48,14 @@ userRoutes.route("/profiles/:userid/curProfile")
     }
   });
 
+  userRoutes.route("/user/changePassword")
+  .put(async (req: Request, res: Response) => {
+    try {
+      await userController.updatePassword(req, res);
+    } catch (error) {
+      res.status(500).send({ error });
+      console.log(error);
+    }
+  })
+
 export default userRoutes;

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { NavigationEnd } from '@angular/router';
+import { LoginService } from './login/login.service';
 
 
 @Component({
@@ -20,7 +21,7 @@ export class AppComponent implements OnInit {
     });
   }
   
-  constructor(private router: Router) {}
+  constructor(private router: Router, private loginService: LoginService) {}
 
   isAccountMenuVisible: boolean = false;
   isStreakPopupVisible: boolean = false;
@@ -40,7 +41,7 @@ export class AppComponent implements OnInit {
   }
 
   checkIfNavigationVisible() {
-    if (this.router.url !== '/login' && this.router.url !== '/register') {
+    if (this.router.url !== '/login' && this.router.url !== '/register' && !this.loginService.getIsManager()) {
       this.isNavigationVisible = true;
     }
     else this.isNavigationVisible = false
