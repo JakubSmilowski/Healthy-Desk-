@@ -1,13 +1,9 @@
-<head>
-    <title>Alert Popup</title>
-    <link rel="stylesheet" href="alert-popup.component.css">
-</head>
 <body>
-    <div *ngIf="showPopup" id="popup-container">
+    <div *ngIf="showPopUp" id="popup-container">
         <h1>Alert: Change position</h1>
         <h2>Do you accept changing your position?</h2>
         <p>You will earn x amount of points if you accept</p>
-        <button id="AcceptAlert" (click)="onAccept()">Accept</button>
-        <button id="DenyAlert" (click)="onDeny()">Deny</button>
+        <button id="AcceptAlert" (click)="userChoice('accept')">Accept</button>
+        <button id="DenyAlert" (click)="userChoice('deny')">Deny</button>
     </div>
 </body>

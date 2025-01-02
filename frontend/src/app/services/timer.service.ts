@@ -3,6 +3,7 @@ import { Profile } from '../models/ProfileModel';
 import { HomeService } from '../home/home.service';
 import { DeskApiService } from './desk-api.service';
 import { LoginService } from '../login/login.service';
+import { AlertPopupService } from '../alert-popup/alert-popup.service';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,8 @@ export class TimerService {
   constructor(
     private homeService: HomeService,
     private apiDeskService: DeskApiService,
-    private loginService: LoginService
+    private loginService: LoginService,
+    private alertPopUp: AlertPopupService
   ) {
     if (typeof Worker !== 'undefined') {
       // Create a new
@@ -62,7 +64,7 @@ export class TimerService {
     const profile = await this.getSelectedProfile();
     if (!profile) {
       console.error('Error: Profile not loaded');
-      throw new Error;
+      throw new Error();
     }
     this.sittingHeight = this.loginService.getUserHeight() * 0.43;
     this.curProfile = profile;
@@ -96,6 +98,12 @@ export class TimerService {
   }
 
   async startSittingTimer() {
+    this.alertPopUp.displayAlert();
+    const userAccepted = await this.alertPopUp.displayAlert();
+    if (!userAccepted) {
+      console.log('User denied the alert');
+      return;
+    }
     try {
       this.isStanding = false;
       console.log('Profile timer sitting:', this.curProfile.timer_sitting);
@@ -103,9 +111,9 @@ export class TimerService {
         this.curProfile.timer_sitting ?? ''
       );
       const timerSitting = (hours * 60 + minutes) * 60 * 1000;
-      if(timerSitting <= 0) {
+      if (timerSitting <= 0) {
         alert('Please try again');
-        throw new Error;
+        throw new Error();
       }
 
       // starts the timer in the background
@@ -128,13 +136,18 @@ export class TimerService {
   }
 
   async startStandingTimer() {
+    const userAccepted = await this.alertPopUp.displayAlert();
+    if (!userAccepted) {
+      console.log('User denied the alert');
+      return;
+    }
     try {
       this.isStanding = true;
       const { hours, minutes } = this.homeService.calcHrsMins(
         this.curProfile.timer_standing ?? ''
       );
       const timerStanding = (hours * 60 + minutes) * 60 * 1000;
-      if(timerStanding === 0) {
+      if (timerStanding === 0) {
         alert('Please try again');
         throw Error;
       }

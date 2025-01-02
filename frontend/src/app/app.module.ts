@@ -18,6 +18,7 @@ import { AlertModule } from './alert/alert.module';
 import { AnalyticsModule } from './analytics/analytics.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { AlertPopupComponent } from "./alert-popup/alert-popup/alert-popup-view/alert-popup.component";
 
 @NgModule({
   declarations: [
@@ -30,7 +31,6 @@ import { MatExpansionModule } from '@angular/material/expansion';
     AppRoutingModule,
     HttpClientModule,
     NavigationModule,
-    HomeModule,
     FormsModule,
     AccountPopupModule,
     StreakPopupModule,

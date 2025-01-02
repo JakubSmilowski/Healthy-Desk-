@@ -25,7 +25,7 @@ class User extends Model implements IUser {
     public generateToken(): string {
         console.log("Generating token for user:", this.email);
         const payload = { userid: this.userid, email: this.email, username: this.username, isManager: false,
-            alert_streak: this.alert_streak, longest_streak: this.longest_streak, height: this.height
+            alert_streak: this.alert_streak, longest_streak: this.longest_streak, height: this.height, score: this.score
          };
         const secret = "123456";
         console.log("Token data:", JSON.stringify(payload));

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ChartModule } from 'angular-highcharts';
 import { ManagerViewComponent } from './manager-view/manager-view.component';
 
 
@@ -9,7 +10,8 @@ import { ManagerViewComponent } from './manager-view/manager-view.component';
     ManagerViewComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    ChartModule
   ]
 })
 export class ManagerModule { }

@@ -9,6 +9,8 @@ export class AlertService {
   constructor(private http: HttpClient) { }
   
   apiUrl = 'http://192.168.0.104/';
+  buzzerUrl = 'buzzer.cgi?';
+  ledUrl = 'led.cgi?';
   
   // motivationLevel: string = 'low';
 
@@ -31,7 +33,7 @@ export class AlertService {
 
   sendAlert(param: string) {
     console.log('Playing sound...');
-    const url = `${this.apiUrl}${param}?`;
+    const url = `${this.apiUrl}${this.buzzerUrl}?${param}`;
     this.http.get(url)
       .subscribe();
   }

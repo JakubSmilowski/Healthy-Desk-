@@ -3,7 +3,9 @@ import { ScoreModule } from '../score.module';
 import { UserScore } from '../../models/user-score';
 import { ScoreService } from '../score.service';
 import { OnInit } from '@angular/core';
-
+import { LoginService } from '../../login/login.service';
+import { User } from '../../models/UserModel';
+import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-score-view',
   templateUrl: './score-view.component.html',
@@ -11,7 +13,8 @@ import { OnInit } from '@angular/core';
 })
 export class ScoreViewComponent implements OnInit {
 
-  constructor(private scoreService: ScoreService) { }
+  constructor(private scoreService: ScoreService, private loginService: LoginService,private http: HttpClient) {
+  }
 
   users: UserScore[] = [];
   currentUserId: number = 1;
@@ -20,14 +23,37 @@ export class ScoreViewComponent implements OnInit {
   weekScore: number = 41;
   monthScore: number = 256;
 
-  ngOnInit(): void {
-    this.users = this.scoreService.getUserScore();
-    this.displayUserScoreInOrder();
-    //This should be implemented beetter depnnding on the loged in user.
-    this.currentUserId = this.users[0].id; 
 
-    this.currentUserName = this.users[this.currentUserId].name;
-    // this.currentUserScore = this.users[this.currentUserId].score;
+  ngOnInit(): void {
+    this.loadCurrentUsuerScore();
+    // this.users = this.scoreService.getUserScore();
+    this.getDataFromApi();
+    this.loadDataFromApi();
+    this.displayUserScoreInOrder();
+  }
+
+  loadCurrentUsuerScore(){
+    this.currentUserName = this.loginService.getCurrentUsername();
+    this.weekScore = this.loginService.getUserScore() - 21; ;
+    this.monthScore = this.loginService.getUserScore();
+    this.todayScore = this.loginService.getUserScore() -166;
+
+    
+  }
+
+  getDataFromApi(){
+    return this.http.get('http://localhost:3000/api/users/score');
+  }
+
+  loadDataFromApi(){
+    this.getDataFromApi().subscribe((data: any) => {
+      console.log(data)
+      console.log(data.usersScore);
+      this.users = [];
+      data.usersScore.forEach((userScore: UserScore) => {
+        this.users.push(userScore);
+      });
+    });
   }
 
   displayUserScoreInOrder() {

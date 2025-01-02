@@ -141,6 +141,18 @@ export class LoginService {
     }
   }
 
+  getUserScore() {
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decodedUser: any = jwtDecode(token);
+      console.log(decodedUser.score);
+      return decodedUser.score;
+    } else {
+      console.log('Error getting the score. Token is null.');
+      return null;
+    }
+  }
+
   changePassword(newPassword: string): Observable<string> {
     const userId = this.getUserId();
     if (userId) {

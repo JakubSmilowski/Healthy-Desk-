@@ -57,7 +57,20 @@
     color: #ffffff;
     transform: translateY(-5px);
 }
+.chart-container {
+    width: 90%;
+    height: 100%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
 
+.container {
+    height: 70vh;
+    padding: 20px;
+}
 .container {
     height: 70vh;
 }

@@ -6,6 +6,7 @@ import { DeskApiService } from '../../services/desk-api.service';
 import { response } from 'express';
 import { LoginService } from '../../login/login.service';
 import { TimerService } from '../../services/timer.service';
+import { AlertPopupService } from '../../alert-popup/alert-popup.service';
 
 @Component({
   selector: 'app-home-view',

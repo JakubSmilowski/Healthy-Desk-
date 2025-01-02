@@ -14,6 +14,7 @@ export class AnalyticsService {
         date: date,
         userid: userid,
       },
+    
     });
     if (existingDay) {
       //if the day already exists, it updates it.
@@ -55,7 +56,7 @@ export class AnalyticsService {
     }
   }
 
-  static async getMonthAnalytics(
+    static async getMonthAnalytics(
     userid: number,
     year: number,
     month: number
@@ -94,6 +95,35 @@ export class AnalyticsService {
       console.log("Month analytics calculated:", totalTimesMoved, avgStandingHrs);
     return { totalTimesMoved, avgStandingHrs };
   }
+  static async getStandingDistribution(userid: number): Promise<{standing_hrs: number}[]> {
+    try {
+      console.log("Getting standing distribution for user:", userid);
+      
+      const thirtyDaysAgo = new Date();
+      thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
+  
+      const days = await Day.findAll({
+        where: {
+          userid: userid,
+          date: {
+            [Op.gte]: thirtyDaysAgo
+          }
+        }
+      });
+  
+      const daysData = days.map(day => ({
+        standing_hrs: day.getStandingHrs()
+      }));
+  
+      console.log("Standing distribution data retrieved:", daysData);
+      return daysData;
+    } catch (error) {
+      console.error("Error getting standing distribution:", error);
+      throw error;
+    }
+  }
 }
+
+
 
 export default AnalyticsService;

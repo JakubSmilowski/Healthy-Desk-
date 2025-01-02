@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AnalyticsModule } from '../analytics.module';
 import { Chart } from 'angular-highcharts';
 import { AnalyticsService } from '../analytics.service';
+import { LoginService } from '../../login/login.service';
 import { Month } from '../../models/MonthModel';
 @Component({
   selector: 'app-analytics-view',
@@ -34,37 +35,15 @@ export class AnalyticsViewComponent implements OnInit {
 
   monthAnalytics: Month[] = [];
 
-  constructor(private analyticsService: AnalyticsService) {
+  constructor(
+    private analyticsService: AnalyticsService,
+    private loginService: LoginService) {
     this.curDate = new Date();
     const curMonthIndex = this.curDate.getMonth();
 
     this.curMonth = this.monthNames[curMonthIndex];
     this.prevMonth = this.monthNames[(curMonthIndex - 1 + 12) % 12];
     this.twoMonthsAgo = this.monthNames[(curMonthIndex - 2 + 12) % 12];
-  }
-
-  async ngOnInit() {
-    this.createPieChart();
-    this.getCurMonths();
-    await this.analyticsService.getMonthAnalytics(this.curDate).subscribe({
-      next: (response) => {
-        this.monthAnalytics.push(response);
-      },
-    });
-    await this.analyticsService
-      .getMonthAnalytics(this.prevMonthDate)
-      .subscribe({
-        next: (response) => {
-          this.monthAnalytics.push(response);
-        },
-      });
-    await this.analyticsService
-      .getMonthAnalytics(this.twoMonthsDate)
-      .subscribe({
-        next: (response) => {
-          this.monthAnalytics.push(response);
-        },
-      });
   }
 
   getCurMonths() {
@@ -132,22 +111,22 @@ export class AnalyticsViewComponent implements OnInit {
         rules: [
           {
             condition: {
-              maxWidth: 600, // Adjust for smaller screens
+              maxWidth: 600,
             },
             chartOptions: {
               chart: {
-                height: '60%', // Resize chart for small screens
+                height: '60%',
               },
               title: {
                 style: {
-                  fontSize: '18px', // Adjust title size for small screens
+                  fontSize: '18px',
                 },
               },
               plotOptions: {
                 pie: {
                   dataLabels: {
                     style: {
-                      fontSize: '10px', // Adjust labels
+                      fontSize: '10px',
                     },
                   },
                 },
@@ -161,11 +140,42 @@ export class AnalyticsViewComponent implements OnInit {
           type: 'pie',
           name: 'Time Distribution',
           data: [
-            { name: 'Standing', y: 40, color: '#84C6DC' },
-            { name: 'Sitting', y: 60, color: '#B3E0F3' },
+            { name: 'Standing', y: 39.7, color: '#84C6DC' },
+            { name: 'Sitting', y: 60.3, color: '#B3E0F3' },
           ],
         },
       ],
+    });
+  }
+
+  async ngOnInit() {
+    this.createPieChart();
+    this.getCurMonths();
+    
+    const userId = this.loginService.getUserId();
+    if (userId) {
+      this.analyticsService.getStandingSittingDistribution(userId).subscribe({
+        next: (data) => {
+          this.pieChart.removeSeries(0);
+          this.pieChart.addSeries({
+            type: 'pie',
+            name: 'Time Distribution',
+            data: [
+              { name: 'Standing', y: data.standing, color: '#84C6DC' },
+              { name: 'Sitting', y: data.sitting, color: '#B3E0F3' }
+            ]
+          }, true, true);
+        },
+        error: (error) => {
+          console.error('Error fetching standing distribution:', error);
+        }
+      });
+    }
+
+    await this.analyticsService.getMonthAnalytics(this.curDate).subscribe({
+      next: (response) => {
+        this.monthAnalytics.push(response);
+      },
     });
   }
 }

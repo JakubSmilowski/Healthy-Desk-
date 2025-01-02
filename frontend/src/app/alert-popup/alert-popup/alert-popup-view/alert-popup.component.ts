@@ -1,32 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { ChangeDetectorRef, Component, OnInit, OnDestroy } from '@angular/core';
+import { AlertPopupService } from '../../alert-popup.service';
+import { Subscription, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-alert-popup',
+  standalone: true,
+  imports: [CommonModule],
   templateUrl: './alert-popup.component.html',
-  styleUrl: './alert-popup.component.css'
+  styleUrls: ['./alert-popup.component.css']
 })
 export class AlertPopupComponent implements OnInit {
-  showPopup = false;
+
+  showPopUp!: boolean;
+
+  constructor(public alertService: AlertPopupService) { }
 
   ngOnInit(): void {
-    this.startPopupTimer();
+    console.log('Subscribing to showPopUp$');
+    this.alertService.showPopUp$.subscribe((showPopUp) => {
+      console.log('showPopUp$ emitted value:', showPopUp);
+      this.showPopUp = showPopUp;
+      console.log('showPopUp:', showPopUp);
+    });
   }
 
-  startPopupTimer(): void {
-      //Timer for popup
-      setTimeout(() => {
-        this.showPopup = true;
-      }, 1000) //Display popup after x amount of sec
-  }
-
-  onAccept(): void {
-    this.showPopup = false;
-    console.log("Accepted");
-    this.startPopupTimer();
-  }
-
-  onDeny(): void {
-    this.showPopup = false;
-    console.log("Denied");
+  userChoice(choice: 'accept' | 'deny'): boolean {
+    if (choice === 'accept') {
+      this.alertService.onAccept();
+      return true;
+    } else if (choice === 'deny') {
+      this.alertService.onDeny();
+      return false;
+    }
+    return false;
   }
 }

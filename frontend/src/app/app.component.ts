@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { OnInit } from '@angular/core';
 import { NavigationEnd } from '@angular/router';
 import { LoginService } from './login/login.service';
+import { AlertPopupComponent } from './alert-popup/alert-popup/alert-popup-view/alert-popup.component';
 
 
 @Component({
@@ -12,6 +13,8 @@ import { LoginService } from './login/login.service';
 })
 export class AppComponent implements OnInit {
   title = 'Healthy-Desk';
+
+  @ViewChild(AlertPopupComponent) alertPopupComponent!: AlertPopupComponent;
 
   ngOnInit(): void {
     this.router.events.subscribe(event => {

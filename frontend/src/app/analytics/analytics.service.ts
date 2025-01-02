@@ -12,9 +12,30 @@ export class AnalyticsService {
   private apiUrl = 'http://localhost:3000/api/analytics';
 
   constructor(private loginService: LoginService, private http: HttpClient) {
-    
+  
   }
-
+  getStandingSittingDistribution(userId?: number): Observable<{standing: number, sitting: number}> {
+    const currentUserId = userId || this.loginService.getUserId();
+    
+    if (currentUserId === null) {
+      return throwError(() => new Error('User ID is not available'));
+    }
+  
+    return this.http.get<any[]>(`${this.apiUrl}/${currentUserId}/standing-distribution`).pipe(
+      map(data => {
+        const totalHours = 24;
+        const avgStandingHours = data.reduce((acc, day) => acc + day.standing_hrs, 0) / data.length;
+        return {
+          standing: (avgStandingHours / totalHours) * 100,
+          sitting: ((totalHours - avgStandingHours) / totalHours) * 100
+        };
+      }),
+      catchError(error => {
+        console.error('Error getting standing distribution:', error);
+        return throwError(() => new Error('Error getting standing distribution'));
+      })
+    );
+  }
   async updateDay(timeStanding: number) {
     const userid = this.loginService.getUserId();
     if (userid !== null) {

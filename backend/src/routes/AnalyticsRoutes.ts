@@ -19,5 +19,12 @@ analyticsRoutes.get('/analytics/:userid/month', async (req: Request, res: Respon
     res.status(500).send('Error getting month analytics');
   }
 });
-
+analyticsRoutes.get('/analytics/:userid/standing-distribution', async (req: Request, res: Response) => {
+  try {
+    await analyticsController.getStandingDistribution(req, res);
+  } catch (error) {
+    console.error('Error getting standing distribution:', error);
+    res.status(500).send('Error getting standing distribution');
+  }
+});
 export default analyticsRoutes;

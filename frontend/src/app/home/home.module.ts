@@ -5,7 +5,6 @@ import { NavigationModule } from '../navigation/navigation.module';
 import { AccountPopupModule } from '../account-popup/account-popup.module';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { AlertPopupModule } from '../alert-popup/alert-popup/alert-popup.module';
 
 @NgModule({
   declarations: [
@@ -17,7 +16,6 @@ import { AlertPopupModule } from '../alert-popup/alert-popup/alert-popup.module'
     FormsModule,
     AccountPopupModule,
     HttpClientModule,
-    AlertPopupModule
   ]
 })
 export class HomeModule { }

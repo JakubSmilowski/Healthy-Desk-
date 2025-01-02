@@ -1,5 +1,4 @@
 export interface UserScore {
-    id: number;
-    name: string;
+    username: string;
     score: number;
 }

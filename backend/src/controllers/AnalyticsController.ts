@@ -36,6 +36,23 @@ export class AnalyticsController {
       res.status(500).send("Error getting month analytics");
     }
   }
-}
+
+  async getStandingDistribution(req: Request, res: Response) {
+    const { userid } = req.params;
+
+    try {
+      console.log('Getting standing distribution in controller for user:', userid);
+
+      const standingData = await AnalyticsService.getStandingDistribution(
+        Number(userid)
+      );
+
+      res.status(200).json(standingData);
+    } catch (error) {
+      console.error("Error getting standing distribution:", error);
+      res.status(500).send("Error getting standing distribution");
+    }
+}}
+
 
 export default AnalyticsController;

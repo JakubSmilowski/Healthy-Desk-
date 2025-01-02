@@ -1,11 +1,14 @@
 <div class="nav-bar">
     <div class="nav-container">
-        <h1 class = "header-title">Healthy Desk</h1>
+        <h1 class="header-title">Healthy Desk</h1>
         <div class="logout-section">
             <div class="logout-button" (click)="logoutClicked();">Log out</div>
-        </div>   
+        </div>
     </div>
 </div>
 
 <div class="container">
+    <div class="chart-container">
+        <div [chart]="lineChart"></div>
+    </div>
 </div>
