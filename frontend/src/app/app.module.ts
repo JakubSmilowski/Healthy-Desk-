@@ -39,6 +39,7 @@ import { AlertPopupComponent } from "./alert-popup/alert-popup/alert-popup-view/
     ScoreModule,
     AlertModule,
     AnalyticsModule,
+    AlertPopupComponent,
     MatExpansionModule
   ],
   providers: [TimerService, provideAnimationsAsync()],
