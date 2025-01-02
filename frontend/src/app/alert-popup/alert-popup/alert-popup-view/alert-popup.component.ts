@@ -28,6 +28,5 @@ export class AlertPopupComponent implements OnInit {
   onDeny(): void {
     this.showPopup = false;
     console.log("Denied");
-    this.startPopupTimer();
   }
 }
