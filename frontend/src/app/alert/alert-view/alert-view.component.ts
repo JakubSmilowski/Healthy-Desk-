@@ -9,7 +9,7 @@ import { AlertService } from '../alert.service';
 export class AlertViewComponent {
   constructor(private alertService: AlertService) { }
   
-  sendAlert1() {
+ /* sendAlert1() {
     const currentAlertSount = "low";
     this.alertService.sendAlert(currentAlertSount);
   }
@@ -21,5 +21,5 @@ export class AlertViewComponent {
   sendAlert3() {
     const currentAlertSount = "high";
     this.alertService.sendAlert(currentAlertSount);
-  }
+  }*/
 }

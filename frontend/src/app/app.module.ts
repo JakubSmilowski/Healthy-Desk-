@@ -16,7 +16,8 @@ import { TimerService } from './services/timer.service';
 import { ScoreModule } from './score/score.module';
 import { AlertModule } from './alert/alert.module';
 import { AnalyticsModule } from './analytics/analytics.module';
-
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -38,8 +39,9 @@ import { AnalyticsModule } from './analytics/analytics.module';
     ScoreModule,
     AlertModule,
     AnalyticsModule,
+    MatExpansionModule
   ],
-  providers: [TimerService],
+  providers: [TimerService, provideAnimationsAsync()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

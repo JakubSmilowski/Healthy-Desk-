@@ -1,32 +1,43 @@
-<body>
-    <h1>Alert setup</h1>
-    <h2>Personalise your alert settings to fit your needs.</h2>
-
-    <div 
-        class="popover-container">
-        <button
-            class="button button1" (click)="sendAlert1()">Turn alerts on/off <!--state dependent-->
-        </button><br>
-    </div>
-
-    <div
-        class="popover-container">
-        <button
-            class="button button2"
-            popovertarget="MotivationLevel1"
-            popovertargetaction="toggle"  (click)="sendAlert2()">Motivation level
-        </button><br>
-        <p popover id="MotivationLevel1">Intense</p>
-        <!--<p popover id="MotivationLevel2">Intense</p>-->
-    </div>
-
-    <div
-        class="popover-container">
-        <button
-            class="button button3"
-            popovertarget="AlertIntensity"
-            popovertargetaction="toggle" (click)="sendAlert3()">Alert intensity
-        </button>
-        <p popover id="AlertIntensity">soft</p>
-    </div>
-</body>
+<head>
+    <link rel="stylesheet" href="alert-view.component.css">
+    </head>
+    <body>
+        <h1>Alert setup</h1>
+        <h2>Personalise your alert settings to fit your needs.</h2>
+    
+        <section class="alertBox">
+            <mat-expansion-panel class="AlertSetupButton" id="col1">
+                <mat-expansion-panel-header>
+                    <mat-panel-title class="ButtonTitle">
+                        Turn alerts on/off <!--state dependent-->
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+                <button class="secondButtons">On</button><br>
+                    <button class="secondButtons">Off</button><br>
+            </mat-expansion-panel>
+    
+                <mat-expansion-panel class="AlertSetupButton" id="col2">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title class="ButtonTitle">
+                            Motivation level
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+    
+                    <button class="secondButtons">Low</button><br>
+                    <button class="secondButtons">Moderate</button><br>
+                    <button class="secondButtons">Extreme</button>
+                </mat-expansion-panel>
+    
+                <mat-expansion-panel class="AlertSetupButton" id="col3">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title class="ButtonTitle">
+                            Alert Intensity
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+    
+                    <button class="secondButtons">Low</button><br>
+                    <button class="secondButtons">Moderate</button><br>
+                    <button class="secondButtons">Extreme</button>
+                </mat-expansion-panel>
+        </section>
+    </body>
